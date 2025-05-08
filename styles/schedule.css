@@ -1,0 +1,364 @@
+.schedule-area {
+    margin-left: var(--sidebar-width);
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 500px;  /* Increased from 400px */
+    gap: 20px;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.clock-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    grid-row: span 2;
+}
+
+.clock {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: var(--bg-color);
+    /* Remove border to avoid double circle overlay */
+    /* border: 24px solid var(--border-color); */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#clock-canvas {
+    position: absolute;
+    left: 0; top: 0;
+    width: 600px; height: 600px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.clock-center, #current-time-marker {
+    display: none !important;
+}
+
+.hour-marker {
+    position: absolute;
+    width: 2px;
+    height: 18px;
+    background: var(--text-color);
+    left: 50%;
+    top: 0;
+    transform-origin: 50% 290px;
+    z-index: 4;
+}
+
+.hour-text {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    left: 50%;
+    top: 0;
+    transform-origin: 50% 270px;
+    z-index: 4;
+    background: transparent;
+    pointer-events: none;
+}
+
+#current-time-marker {
+    display: none; /* Remove the hour hand */
+}
+
+#schedule-segments {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/* Remove .schedule-segment, not needed with canvas arcs */
+
+/* Improved activity item layout */
+.activity-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+    background: var(--light-gray);
+    border-radius: 8px;
+    padding: 8px 12px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+    font-size: 1rem;
+    transition: background 0.2s;
+}
+.activity-item:hover {
+    background: var(--primary-color);
+    color: var(--bg-color);
+}
+.activity-item span {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.activity-actions {
+    margin-left: auto;
+    display: flex;
+    gap: 4px;
+}
+
+.activity-actions button {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    transition: background 0.15s;
+}
+.activity-actions button:hover {
+    background: var(--bg-color);
+}
+
+/* ----
+   To adjust hour marker and number positions, edit the following in schedule.js:
+   - For markers: the `markerRadius` variable (default 276)
+   - For numbers: the `numberRadius` variable (default 240)
+---- */
+
+.schedule-controls {
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    width: 100%;
+}
+
+#activity-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 15px;
+}
+
+#activity-form input[type="text"],
+#activity-form input[type="time"],
+#activity-form input[type="number"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+#activity-form input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.1);
+}
+
+.days-select {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 12px;
+    padding: 12px;
+    background: var(--light-gray);
+    border-radius: 8px;
+}
+
+.days-select label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-color);
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.days-select label:hover {
+    background: var(--bg-color);
+}
+
+#activity-form button[type="submit"] {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#activity-form button[type="submit"]:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(108, 99, 255, 0.2);
+}
+
+.schedule-list {
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    max-height: 500px;  /* Increased from 400px */
+    overflow-y: auto;
+    width: 100%;
+}
+
+.activity-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 12px 16px;
+    transition: all 0.2s ease;
+}
+
+.activity-name {
+    font-weight: 500;
+    flex: 1;
+}
+
+.activity-time {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.activity-actions {
+    margin-left: auto;
+    display: flex;
+    gap: 4px;
+}
+
+.activity-actions button {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: background 0.15s;
+}
+
+.activity-actions button:hover {
+    background: var(--light-gray);
+}
+
+.clock-hand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: bottom;
+    border-radius: 2px;
+    z-index: 10;
+}
+
+.hour-hand {
+    width: 4px;
+    height: 100px;
+    background: var(--primary-color);
+    transform-origin: bottom center;
+}
+
+.minute-hand {
+    width: 3px;
+    height: 140px;
+    background: var(--text-color);
+    transform-origin: bottom center;
+}
+
+.second-hand {
+    width: 2px;
+    height: 150px;
+    background: #ff6b6b;
+    transform-origin: bottom center;
+}
+
+.activity-tooltip {
+    position: fixed;
+    background: var(--bg-color);
+    color: var(--text-color);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    pointer-events: none;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    display: none;
+}
+
+.activity-item {
+    transition: all 0.2s ease;
+}
+
+[data-theme="light"] .activity-item:hover {
+    background: brightness(0.95);
+    filter: brightness(0.95);
+}
+
+[data-theme="dark"] .activity-item:hover {
+    background: brightness(1.2);
+    filter: brightness(1.2);
+}
+
+.segment-hit-area {
+    cursor: pointer;
+    position: absolute;
+    z-index: 5;
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.clock-hand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: bottom;
+    border-radius: 2px;
+    z-index: 10;
+}
+
+.hour-hand {
+    width: 4px;
+    height: 120px;
+    background: var(--primary-color);
+}
+
+.second-hand {
+    width: 2px;
+    height: 160px;
+    background: #ff6b6b;
+    transition: transform 0.1s cubic-bezier(0.4, 2.08, 0.55, 0.44);
+}
