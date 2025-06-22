@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remi - AI Student Assistant</title>
+    <link rel="stylesheet" href="styles/main.css"> <!-- This links your crayons (CSS) -->
+    <link rel="stylesheet" href="styles/tasks.css"> <!-- This links your crayons (CSS) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="sidebar-header sidebar-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <nav class="sidebar-icons">
+        <a href="chat.html" class="sidebar-item">
+          <i class="fas fa-message"></i>
+          <span class="icon-description">Chat</span>
+        </a>
+        <a href="tasks.html" class="sidebar-item">
+          <i class="fas fa-book"></i>
+          <span class="icon-description">Tasks</span>
+        </a>
+        <a href="schedule.html" class="sidebar-item">
+          <i class="fas fa-calendar-alt"></i>
+          <span class="icon-description">Schedule</span>
+        </a>
+        <a href="achievements.html" class="sidebar-item">
+          <i class="fas fa-lightbulb"></i>
+          <span class="icon-description">Achievements</span>
+        </a>
+        <a href="settings.html" class="sidebar-item">
+          <i class="fas fa-clock"></i>
+          <span class="icon-description">Tracker</span>
+        </a>
+        <a href="settings.html" class="sidebar-item">
+          <i class="fas fa-heart"></i>
+          <span class="icon-description">Customization</span>
+        </a>
+        <a href="settings.html" class="sidebar-item">
+          <i class="fas fa-cart-plus"></i>
+          <span class="icon-description">Shop</span>
+        </a>
+        <a href="settings.html" class="sidebar-item">
+          <i class="fas fa-cog"></i>
+          <span class="icon-description">Settings</span>
+        </a>
+      </nav>
+    </div>
+    
+    <div class="topbar-menu">
+      <img src="pfp/Shinobu-Sticker.png" class="topbar-logo">
+      <span class="topbar-title"><img src="pfp/Remi-Logo-removebg-preview (1).png" class="main-logo"></span>
+      <div>
+        <button class="toggle-dark-button"><i class="fas fa-moon toggle-icon"></i></button>
+      </div>
+    </div>
+    <div class="main-content">
+      <div class="tasks-content">
+        <div class="create-task">
+        <h2 class="create-task-title">Create a Task</h2>
+        <form id="task-form">
+          <input type="text" id="task-name" placeholder="Task Name" required>
+          <textarea id="task-description" placeholder="Task Description"></textarea>
+          <input type="date" id="task-date" required>
+          <input type="time" id="task-time" required>
+          <input type="number" id="task-duration" placeholder="Duration (minutes)" required>
+          <select id="task-priority" required>
+            <option value="" disabled selected>Priority</option>
+            <option value="1">Low</option>
+            <option value="2">Medium</option>
+            <option value="3">High</option>
+          </select>
+          <label for="task-repetable task-label">Repetable:</label>
+          <input type="checkbox" id="task-repetable-days" name="task-repetable-days">
+          <div class="repeat-days">
+            <label class="day-choice task-label"><input type="checkbox" name="days" value="tue">Tue</label>
+            <label class="day-choice task-label"><input type="checkbox" name="days" value="mon">Mon</label>
+            <label class="day-choice task-label"><input type="checkbox" name="days" value="wed">Wed</label>
+            <label class="day-choice task-label"><input type="checkbox" name="days" value="thu">Thu</label>
+            <label class="day-choice task-label"><input type="checkbox" name="days" value="fri">Fri</label>
+            <label class="day-choice task-label"><input type="checkbox" name="days" value="sat">Sat</label>
+            <label class="day-choice task-label"><input type="checkbox" name="days" value="sun">Sun</label>
+          </div>
+          <button class="advanced-toggle-button" type="button">Advanced Settings</i></button>
+          <div class="advanced-options">
+            <label for="task-location task-label">Location:</label>
+            <input type="text" id="task-location" placeholder="Enter location">
+            <label for="task-milestone task-label">Milestone:</label>
+            <select id="milestone-select">
+              <option value="" disabled selected>Select Milestone</option>
+              <option value="milestone1">Milestone 1</option>
+              <option value="milestone2">Milestone 2</option>
+              <option value="milestone3">Milestone 3</option>
+            <textarea id="task-notes" placeholder="Additional notes"></textarea>
+            <input type="text" id="task-tags" placeholder="Tags (comma separated)">
+            <label for="task-color task-label">Color:</label>
+            <input type="color" id="task-color" value="#ffffff">
+            <label for="task-deadline task-label">Deadline:</label>
+            <input type="time" id="task-deadline">
+            <label for="task-effort task-label">Effort Level:</label>
+            <select id="task-effort">
+              <option value="" disabled selected>Select Effort Level</option>
+              <option value="1">😌Very Easy</option>
+              <option value="2">🙂Easy</option>
+              <option value="3">😐Moderate</option>
+              <option value="4">😰Hard</option>
+              <option value="5">💀Insane</option>
+            </select>
+            <button class="add-subtask-button">Add a Subtask</button>
+            <div class="subtask-container">
+              <div class="subtask">
+                <label for="subtask-name">Subtask 1</label>
+                <button class="delete-subtask-button"><i class="fas fa-trash"></i></button>
+                <button class="edit-subtask-button"><i class="fas fa-edit"></i></button>
+              </div>
+              <div class="subtask">
+                <label for="subtask-name">Subtask 2</label>
+                <button class="delete-subtask-button"><i class="fas fa-trash"></i></button>
+                <button class="edit-subtask-button"><i class="fas fa-edit"></i></button>
+              </div>
+              <div class="subtask">
+                <label for="subtask-name">Subtask 3</label>
+                <button class="delete-subtask-button"><i class="fas fa-trash"></i></button>
+                <button class="edit-subtask-button"><i class="fas fa-edit"></i></button>
+              </div>
+            </div>
+             
+          </div>
+          <button type="submit" class="create-task-button">Add Task</button>
+        </form>
+        </div>
+        <div class="tasks-list">
+          <div class="task-item">
+            <div class="task-infos">
+              <div class="task-name">Sample Task</div>
+              <div class="task-description">This is a sample task description.</div>
+            </div>
+            <div class="task-settings">
+              <div class="task-date">Due: 2023-10-01</div>
+              <div class="task-time">Duration: </div>
+            </div>
+            <div class="task-controlls">
+              <button class="delete-task-button"><i class="fas fa-trash"></i></button>
+              <button class="edit-task-button"><i class="fas fa-edit"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="charts-container">
+      </div>
+    </div>
+    <script src="scripts/system.js"></script>
+  </body>
+</html>

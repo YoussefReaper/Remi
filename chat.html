@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Remi - AI Student Assistant</title>
+    <link rel="stylesheet" href="styles/chat.css"> <!-- This links your crayons (CSS) -->
     <link rel="stylesheet" href="styles/main.css"> <!-- This links your crayons (CSS) -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   </head>
@@ -43,27 +44,28 @@
         <button class="toggle-dark-button"><i class="fas fa-moon toggle-icon"></i></button>
       </div>
     </div>
-    
+    <div class="chat-list">
+      <div class="chat-list-buttons">
+        <button class="new-chat-button"><i class="fas fa-angle-left"></i></button>
+        <button class="list-button-controller"><i class="fas fa-add"></i></button>
+        <input type="text" class="search-input" placeholder="Search chats...">
+        <button class="search-button"><i class="fas fa-search"></i></button>
+      </div>
+      <div class="chat-list-container" id="chatListContainer">
+      </div>
+    </div>
     <div class="main-content">
-      <div class="header">
-        <span>Remi - Your Study Buddy</span>
-      </div>
-      <div class="header-description">
-        <span>Bored from common todo lists and schedules? Is it hard to manage your time efficiently? You're in the right place!</span>
-      </div>
-      <div class="button-main-components">
-        <button class="chat-button">
-          <span>Chat with Remi!</span>
-        </button>
-        <button class="login-button">
-          <span>Log in</span>
-        </button>
-        <button class="signup-button">
-          <span>Sign Up Now!</span>
-        </button>
+      <div class="chat-container">
+        <div class="chat-messages" id="chatMessages" data-chat-id="123456"> 
+        </div>
+        <div class="chat-input">
+          <textarea type="text" class="message-input" id="messageInput" placeholder="Type your message here..."></textarea>
+          <button class="send-message-button"><i class="fas fa-paper-plane"></i></button>
+        </div>
       </div>
     </div>
 
+    <script src="scripts/chat.js"></script>
     <script src="scripts/system.js"></script>
   </body>
 </html>

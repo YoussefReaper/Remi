@@ -1,0 +1,190 @@
+:root {
+    --title-text-color: rgb(170, 121, 249);
+    --background-color: rgb(238, 248, 255);
+    --text-color: rgb(18, 94, 142);
+    --text-shadow-color: rgb(24, 190, 255);
+    --button-bg-color: rgb(131, 236, 255);
+    --button-hover-bg-color: rgb(40, 226, 255);
+    --button-active-bg-color: rgb(114, 191, 242);
+    --button-text-color: rgb(161, 178, 193);
+    --text-line: rgb(150, 150, 150);
+    --text-line-shadow: rgba(178, 178, 178, 0.718);
+    --sidebar-collapsed-width: 60px;
+    --sidebar-expanded-width: 210px;
+    --icons-color: rgb(103, 197, 255);
+    --sidebar-border-color: rgb(24, 190, 255); /* New variable for sidebar border */
+    --background-text-color:  rgb(193, 240, 255);
+    --user-text-color: rgba(48, 48, 48, 0.974);
+    --ai-text-color: rgba(48, 48, 48, 0.974);
+}
+
+[data-theme="dark"] {
+    --title-text-color: rgb(146, 255, 253);
+    --background-color: rgb(42, 40, 40);
+    --text-color: rgb(218, 223, 249);
+    --text-shadow-color: rgb(33, 39, 195);
+    --button-bg-color: rgba(99, 106, 105, 0.558);
+    --button-hover-bg-color: rgb(26, 25, 79);
+    --button-active-bg-color: rgb(6, 14, 254);
+    --button-text-color: rgb(161, 178, 193);
+    --text-line: rgb(30, 30, 30);
+    --icons-color: rgb(211, 211, 211);
+    --sidebar-border-color: rgba(6, 14, 254, 0.501); /* Dark theme border color */
+    --background-text-color:  rgba(69, 69, 69, 0.858);
+    --user-text-color: rgb(221, 221, 221);
+    --ai-text-color: rgb(215, 215, 215);
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--background-color);
+    font-family: monospace;
+    overflow-x: hidden;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.topbar-menu {
+    box-shadow: 0 2px 5px var(--text-line-shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    vertical-align: top;
+    height: 80px;
+    position: fixed;
+    background-color: var(--background-color);
+    width: 100%;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+    margin-left: var(--sidebar-collapsed-width);
+    width: calc(100% - var(--sidebar-collapsed-width));
+    transition: margin-left 0.3s ease, width 0.3s ease;
+    border-bottom: 4px solid var(--sidebar-border-color); /* Add stylish bottom border */
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+    width: 100px;
+}
+
+.topbar-logo {
+    height: 50px;
+    transform: height(50px);
+    transition: transform 0.3s ease;
+}
+
+.topbar-logo:hover {
+    cursor: pointer;
+    transform: height(55px);
+    transition: transform 0.3s ease;
+}
+
+.topbar-title {
+    margin-top: 20px;
+}
+
+.icon {
+    display: inline;
+    width: 30px;
+    height: 30px;
+}
+
+.main-logo {
+    height: 100px;
+}
+
+.toggle-dark-button {
+    height: 50px;
+    width: 50px;
+    background-color: var(--button-bg-color);
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: var(--background-color) 0.3s ease;
+}
+
+.toggle-dark-button:hover{
+    height: 50px;
+    width: 50px;
+    background-color: var(--button-hover-bg-color);
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+}
+
+.sidebar {
+    display: grid;
+    position: fixed;
+    background-color: var(--background-color);
+    width: var(--sidebar-collapsed-width);
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 20000;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: width 0.3s ease;
+    border-radius: 5px;
+}
+
+.icon-description {
+    display: none;
+    color: var(--text-color);
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+
+.sidebar-icons {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    row-gap: 20px;
+    padding-top: 57px;
+    padding-bottom: 450px;
+}
+
+.sidebar-icons a{
+    font-size: 10px;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+}
+.sidebar-icons i{
+    font-size: 20px;
+    align-items: center;
+    margin-left: 12px;
+    color: var(--icons-color);
+    text-decoration: none;
+}
+
+.sidebar-header {
+    margin-left: 15px;
+    margin-top: 23px;
+    margin-bottom: 0;
+    display: flex;
+    font-size: 20px;
+    color: var(--title-text-color);
+    height: 10px;
+    cursor: pointer;
+}
+
+.main-content {
+    margin-left: var(--sidebar-collapsed-width);
+    width: calc(100% - var(--sidebar-collapsed-width));
+    transition: margin-left 0.3s ease, width 0.3s ease;
+    min-height: 100vh;
+    padding-top: 30px;
+}
