@@ -16,6 +16,10 @@
     --background-text-color:  rgb(193, 240, 255);
     --user-text-color: rgba(48, 48, 48, 0.974);
     --ai-text-color: rgba(48, 48, 48, 0.974);
+    --completion-color: rgb(41, 229, 41);
+    --late-color: rgb(255, 153, 0);;
+    --in-progress-color: rgb(0, 170, 255);
+    --Not-done-color: rgb(255, 0, 0);
 }
 
 [data-theme="dark"] {
@@ -33,7 +37,6 @@
     --background-text-color:  rgba(69, 69, 69, 0.858);
     --user-text-color: rgb(221, 221, 221);
     --ai-text-color: rgb(215, 215, 215);
-
 }
 
 * {

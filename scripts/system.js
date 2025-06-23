@@ -44,10 +44,3 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
-
-const input = document.getElementById('messageInput');
-
-input.addEventListener('input', ()=> {
-    input.style.height = 'auto'; // Reset height
-    input.style.height = input.scrollHeight + "px"; // Set height to scrollHeight
-});

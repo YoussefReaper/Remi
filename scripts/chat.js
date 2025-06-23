@@ -82,3 +82,11 @@ function escapeHTML(str) {
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
 }
+
+const input = document.getElementById('messageInput');
+
+input.addEventListener('input', ()=> {
+    input.style.height = 'auto'; // Reset height
+    input.style.height = input.scrollHeight + "px"; // Set height to scrollHeight
+});
+

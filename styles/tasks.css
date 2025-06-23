@@ -21,6 +21,7 @@
 .tasks-list {
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
     row-gap: 10px;
     background-color: var(--button-bg-color);
     width: 500px;
@@ -45,45 +46,88 @@
     margin-left: 80px;
 }
 
+.task-infos {
+    grid-area: header;
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.task-name {
+    font-size: 16px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+
 .task-item {
-    display: flex;
-    flex-direction: column;
     position: relative;
-    width: 50px;
-    height: 40px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto auto;
+    grid-template-areas: 
+        "header controls"
+        "content controls"
+        "footer controls";
+    width: 95%;
+    height: fit-content;
     border-radius: 5px;
     border: none;
+    border-left: 2px solid var(--in-progress-color);
+    margin-bottom: 10px;
     background-color: var(--button-bg-color);
-    color: aliceblue;
-    padding: 10px;
+    color: var(--ai-text-color);
+    padding: 15px;
     font-size: 13px;
+    gap: 5px;
+}
+
+.task-checkbox-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: green;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 12px;
+    transform: translateY(20px);
+    transform: translateX(10px);
 }
 
 .task-date,
 .task-time,
-.task-priority {
-    position: absolute;
-    margin-left: 100px;
-    transform: translateY(-35px);
+.remaining-time {
+    display: inline-block;
     background-color: rgb(82, 82, 82);
     border-radius: 10px;
     padding: 5px;
     font-size: 9px;
+    position: static;
+    margin: 0;
 }
 
-.task-time {
-    margin-left: 227px;
-}
 
-.task-priority {
-    margin-left: 285px;
-}
-
-.task-name {
-    position: relative;
-    font-size: 15px;
-    margin-top: -10px;
-    width: fit-content;
+.task-priority,
+.task-effort {
+    display: inline-block;
+    background-color: #333;
+    border-radius: 10px;
+    padding: 5px 8px;
+    font-size: 9px;
+    margin: 0;
+    position: static;
+    transform: none;
 }
 
 #task-name::placeholder {
@@ -140,23 +184,12 @@
     font-size: 16px;
 }
 
-.delete-task-button {
-    width: 40px;
-    height: 40px;
-    border-radius: 5px;
-    border: none;
-    background-color: var(--button-bg-color);
-    color: aliceblue;
-    padding: 10px;
-    font-size: 14px;
-}
-
-
 .day-choice.active {
     display: inline-block;
 }
 
 #task-duration {
+    display: inline-block;
     width: 30%;
     height: 40px;
     border-radius: 5px;
@@ -181,15 +214,14 @@
 }
 
 #task-repeatable-days {
-    width: 30%;
-    height: 40px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
     border-radius: 5px;
     border: none;
     background-color: var(--button-bg-color);
     color: aliceblue;
-    padding: 10px;
     font-size: 13px;
-    margin-top: 5px;
 }
 
 .day-choice input,
@@ -203,6 +235,10 @@
 
 .advanced-options {
     display: none;
+}
+
+.advanced-options.visible{
+    display: inline-block;
 }
 
 .subtask-container {
@@ -261,6 +297,49 @@
     margin-bottom: 5px;
 }
 
+.task-settings {
+    grid-area: footer;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    gap: 10px;
+    font-size: 12px;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.task-settings > div,
+.task-settings > label {
+    background-color: #333;
+    padding: 5px 8px;
+    border-radius: 8px;
+}
+
+.task-description {
+    grid-area: content;
+    font-size: 12px;
+    opacity: 0.8;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    margin: 5px 0;
+    line-height: 1.4em;
+    display: block;
+    visibility: visible;
+    padding: 0;
+    max-height: none;
+    transform: translateY(-2px);
+}
+
+.task-controlls {
+    grid-area: controls;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+}
+
 #task-location {
     width: 30%;
     height: 20px;
@@ -275,12 +354,12 @@
 
 #milestone-select {
     width: 30%;
-    height: 30px;
+    height: 25px;
     border-radius: 5px;
     border: none;
     background-color: var(--button-bg-color);
     color: aliceblue;
-    padding: 10px;
+    padding: 4px;
     font-size: 13px;
     margin-bottom: 10px;
 }
@@ -358,22 +437,72 @@
     margin-top: 5px;
 }
 
-.task-item {
-    width: 470px;
+.edit-task-button,
+.delete-task-button {
+    width: 25px;
+    height: 25px;
+    font-size: 12px;
+    border: none;
+    border-radius: 5px;
     background-color: var(--button-bg-color);
-    padding: 15px;
-    border-radius: 10px;
-    color: var(--ai-text-color);
+    color: white;
+    cursor: pointer;
 }
 
-.edit-task-button {
-    width: 40px;
-    height: 40px;
-    border-radius: 5px;
-    border: none;
-    background-color: var(--button-bg-color);
-    color: aliceblue;
-    padding: 10px;
-    font-size: 14px;
+.edit-task-button:hover,
+.delete-task-button:hover {
+    background-color: var(--button-hover-bg-color);
+ }
+
+.task-checkbox-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: green;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
+    font-size: 12px;
+    transform: none;
+    z-index: 5;
+}
+
+.task-checkbox-container input[type="checkbox"] {
+    display: none;
+}
+
+.task-checkbox-container label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.task-checkbox-container input[type="checkbox"] + label {
+    background-color: rgb(156, 156, 156);
+    color: transparent;
+}
+
+.task-checkbox-container input[type="checkbox"]:checked + label {
+    background-color: green;
+    color: white;
+}
+
+.task-item.completed .task-name,
+.task-item.completed .task-description {
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+.task-item.completed {
+    border-left: 2px solid var(--completion-color);
+    background-color: var(--completed-bg-color);
 }
