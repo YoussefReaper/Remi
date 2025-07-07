@@ -3,34 +3,377 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Remi - Your Study Buddy</title>
-    <link rel="stylesheet" href="styles/style.css"> <!-- This links your crayons (CSS) -->
+    <title>Achievements - Remi AI Student Assistant | Celebrate Your Success</title>
+    <meta name="description" content="Track your academic achievements and milestones with Remi. Unlock badges, celebrate progress, and stay motivated on your learning journey.">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/achievements.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   </head>
-  <body>
+  <body class="animate-fade-in">
     <div class="sidebar">
-      <div class="sidebar-header">R<span class="other-characters">emi</span></div>
-      <nav class="sidebar-icons">
-        <i class="fas fa-message"><a href="chat.html" class="icon-description">Chat</a></i>
-        <i class="fas fa-book"><a href="tasks.html" class="icon-description">Tasks</a></i>
-        <i class="fas fa-calendar-alt"><a href="schedule.html" class="icon-description">Schedule</a></i>
-        <i class="fas fa-lightbulb"><a href="achievements.html" class="icon-description">Achievements</a></i>
-        <i class="fas fa-cog"><a href="schedule.html" class="icon-description">Settings</a></i>
-      </nav>
-    </div>
-    
-    <div class="topbar-menu">
-      <img src="pfp/Shinobu-Sticker.png" class="topbar-logo">
-      <span class="topbar-title"><img src="pfp/Remi-Logo-removebg-preview (1).png" class="main-logo"></span>
-      <div>
-        <button class="toggle-dark-button"><i class="fas fa-moon toggle-icon"></i></button>
+      <div class="sidebar-header sidebar-toggle">
+        <i class="fas fa-bars"></i>
       </div>
+      <nav class="sidebar-icons">
+        <a href="index.html" class="sidebar-item">
+          <i class="fas fa-home"></i>
+          <span class="icon-description">Home</span>
+        </a>
+        <a href="chat.html" class="sidebar-item">
+          <i class="fas fa-message"></i>
+          <span class="icon-description">Chat</span>
+        </a>
+        <a href="tasks.html" class="sidebar-item">
+          <i class="fas fa-tasks"></i>
+          <span class="icon-description">Tasks</span>
+        </a>
+        <a href="schedule.html" class="sidebar-item">
+          <i class="fas fa-calendar-alt"></i>
+          <span class="icon-description">Schedule</span>
+        </a>
+        <a href="achievements.html" class="sidebar-item active">
+          <i class="fas fa-trophy"></i>
+          <span class="icon-description">Achievements</span>
+        </a>
+        <a href="tracker.html" class="sidebar-item">
+          <i class="fas fa-chart-line"></i>
+          <span class="icon-description">Tracker</span>
+        </a>
+        <a href="customization.html" class="sidebar-item">
+          <i class="fas fa-heart"></i>
+          <span class="icon-description">Customization</span>
+        </a>
+        <a href="shop.html" class="sidebar-item">
+          <i class="fas fa-store"></i>
+          <span class="icon-description">Shop</span>
+        </a>
+        <a href="settings.html" class="sidebar-item">
+          <i class="fas fa-cog"></i>
+          <span class="icon-description">Settings</span>
+        </a>
+      </nav>
+    </div>    
+    <div class="topbar-menu">
+        <img src="pfp/Shinobu-Sticker.png" class="topbar-logo" alt="Shinobu">
+        <div class="topbar-title">
+            <img src="pfp/Remi-Logo-removebg-preview (1).png" class="main-logo" alt="Remi Logo">
+        </div>
+        <div class="topbar-actions">
+            <button class="toggle-dark-button" title="Toggle Dark Mode">
+                <i class="fas fa-moon toggle-icon"></i>
+            </button>
+        </div>
+    </div>    <div class="main-content">
+        <!-- Achievements Hero Section -->
+        <section class="achievements-hero">
+            <div class="hero-background">
+                <div class="floating-trophies">
+                    <div class="floating-trophy trophy-1">🏆</div>
+                    <div class="floating-trophy trophy-2">🎯</div>
+                    <div class="floating-trophy trophy-3">⭐</div>
+                    <div class="floating-trophy trophy-4">🚀</div>
+                    <div class="floating-trophy trophy-5">💎</div>
+                    <div class="floating-trophy trophy-6">👑</div>
+                    <div class="floating-trophy trophy-7">🔥</div>
+                    <div class="floating-trophy trophy-8">✨</div>
+                </div>
+                <div class="hero-gradient-overlay"></div>
+            </div>
+            
+            <div class="hero-content">
+                <div class="achievements-avatar animate-bounce-in">
+                    <div class="avatar-glow"></div>
+                    <img src="pfp/Remi-pfp.png" alt="Remi" class="avatar-img" data-remi-avatar>
+                    <div class="achievement-crown">👑</div>
+                </div>
+                
+                <h1 class="hero-title animate-slide-up">
+                    Your <span class="gradient-text">Achievements</span>
+                    <div class="title-sparkle">✨</div>
+                </h1>
+                
+                <p class="hero-subtitle animate-fade-in-delay">
+                    Celebrate every milestone on your academic journey
+                </p>
+                
+                <div class="achievements-stats animate-slide-up-delay">
+                    <div class="stat-card">
+                        <div class="stat-icon">🏆</div>
+                        <div class="stat-number" data-stat="completed" data-count="15">0</div>
+                        <div class="stat-label">Completed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⭐</div>
+                        <div class="stat-number" data-count="2450">0</div>
+                        <div class="stat-label">Points</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🚀</div>
+                        <div class="stat-number" data-count="8">0</div>
+                        <div class="stat-label">Level</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🔥</div>
+                        <div class="stat-number" data-stat="streak" data-count="12">0</div>
+                        <div class="stat-label">Streak</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📈</div>
+                        <div class="stat-number" data-stat="relationship" data-count="15">0%</div>
+                        <div class="stat-label">Relation</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Overview -->
+        <section class="progress-overview">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-chart-line"></i>
+                    Progress Overview
+                </h2>
+            </div>
+            
+            <div class="progress-cards">
+                <div class="progress-card">
+                    <div class="progress-header">
+                        <h3>Overall Progress</h3>
+                        <span class="progress-percentage">78%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 78%"></div>
+                    </div>
+                    <p class="progress-description">15 out of 19 achievements unlocked</p>
+                </div>
+                
+                <div class="progress-card">
+                    <div class="progress-header">  
+                        <h3>This Month</h3>
+                        <span class="progress-percentage">+3</span>
+                    </div>
+                    <div class="achievement-preview">
+                        <div class="mini-badge earned">🎯</div>
+                        <div class="mini-badge earned">📚</div>
+                        <div class="mini-badge earned">⚡</div>
+                    </div>
+                    <p class="progress-description">New achievements this month</p>
+                </div>
+                
+                <div class="progress-card">
+                    <div class="progress-header">
+                        <h3>Next Milestone</h3>
+                        <span class="progress-percentage">89%</span>
+                    </div>
+                    <div class="next-achievement">
+                        <div class="achievement-icon">🏅</div>
+                        <div class="achievement-info">
+                            <span class="achievement-name">Study Master</span>
+                            <span class="achievement-requirement">Complete 50 tasks</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievement Categories -->
+        <section class="achievement-categories">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-trophy"></i>
+                    Achievement Collection
+                </h2>
+                <div class="category-filters">
+                    <button class="filter-btn active">All</button>
+                    <button class="filter-btn">Study</button>
+                    <button class="filter-btn">Tasks</button>
+                    <button class="filter-btn">Streaks</button>
+                    <button class="filter-btn">Special</button>
+                </div>
+            </div>
+            
+            <div class="achievements-grid">
+                <!-- Earned Achievements -->
+                <div class="achievement-card earned" data-category="study">
+                    <div class="achievement-glow"></div>
+                    <div class="achievement-badge">
+                        <div class="badge-icon">📚</div>
+                        <div class="badge-shine"></div>
+                    </div>
+                    <div class="achievement-info">
+                        <h3 class="achievement-title">First Steps</h3>
+                        <p class="achievement-description">Complete your first study session</p>
+                        <div class="achievement-date">Earned 2 weeks ago</div>
+                    </div>
+                    <div class="achievement-points">+50 XP</div>
+                </div>
+
+                <div class="achievement-card earned" data-category="tasks">
+                    <div class="achievement-glow"></div>
+                    <div class="achievement-badge">
+                        <div class="badge-icon">🎯</div>
+                        <div class="badge-shine"></div>
+                    </div>
+                    <div class="achievement-info">
+                        <h3 class="achievement-title">Task Master</h3>
+                        <p class="achievement-description">Complete 10 tasks in a single day</p>
+                        <div class="achievement-date">Earned 1 week ago</div>
+                    </div>
+                    <div class="achievement-points">+100 XP</div>
+                </div>
+
+                <div class="achievement-card earned" data-category="streaks">
+                    <div class="achievement-glow"></div>
+                    <div class="achievement-badge">
+                        <div class="badge-icon">🔥</div>
+                        <div class="badge-shine"></div>
+                    </div>
+                    <div class="achievement-info">
+                        <h3 class="achievement-title">Week Warrior</h3>
+                        <p class="achievement-description">Maintain a 7-day study streak</p>
+                        <div class="achievement-date">Earned 3 days ago</div>
+                    </div>
+                    <div class="achievement-points">+200 XP</div>
+                </div>
+
+                <div class="achievement-card earned" data-category="special">
+                    <div class="achievement-glow"></div>
+                    <div class="achievement-badge">
+                        <div class="badge-icon">⚡</div>
+                        <div class="badge-shine"></div>
+                    </div>
+                    <div class="achievement-info">
+                        <h3 class="achievement-title">Speed Demon</h3>
+                        <p class="achievement-description">Complete 5 tasks in under 30 minutes</p>
+                        <div class="achievement-date">Earned yesterday</div>
+                    </div>
+                    <div class="achievement-points">+150 XP</div>
+                </div>
+
+                <!-- Locked Achievements -->
+                <div class="achievement-card locked" data-category="study">
+                    <div class="achievement-badge locked">
+                        <div class="badge-icon">🏅</div>
+                        <div class="lock-icon">🔒</div>
+                    </div>
+                    <div class="achievement-info">
+                        <h3 class="achievement-title">Study Master</h3>
+                        <p class="achievement-description">Complete 50 study sessions</p>
+                        <div class="achievement-progress">
+                            <div class="progress-bar small">
+                                <div class="progress-fill" style="width: 72%"></div>
+                            </div>
+                            <span class="progress-text">36/50</span>
+                        </div>
+                    </div>
+                    <div class="achievement-points">+300 XP</div>
+                </div>
+
+                <div class="achievement-card locked" data-category="tasks">
+                    <div class="achievement-badge locked">
+                        <div class="badge-icon">💎</div>
+                        <div class="lock-icon">🔒</div>
+                    </div>
+                    <div class="achievement-info">
+                        <h3 class="achievement-title">Diamond Focus</h3>
+                        <p class="achievement-description">Focus for 100 hours total</p>
+                        <div class="achievement-progress">
+                            <div class="progress-bar small">
+                                <div class="progress-fill" style="width: 45%"></div>
+                            </div>
+                            <span class="progress-text">45/100 hours</span>
+                        </div>
+                    </div>
+                    <div class="achievement-points">+500 XP</div>
+                </div>
+
+                <div class="achievement-card locked" data-category="streaks">
+                    <div class="achievement-badge locked">
+                        <div class="badge-icon">👑</div>
+                        <div class="lock-icon">🔒</div>
+                    </div>
+                    <div class="achievement-info">
+                        <h3 class="achievement-title">Consistency King</h3>
+                        <p class="achievement-description">Maintain a 30-day streak</p>
+                        <div class="achievement-progress">
+                            <div class="progress-bar small">
+                                <div class="progress-fill" style="width: 40%"></div>
+                            </div>
+                            <span class="progress-text">12/30 days</span>
+                        </div>
+                    </div>
+                    <div class="achievement-points">+1000 XP</div>
+                </div>
+
+                <div class="achievement-card locked" data-category="special">
+                    <div class="achievement-badge locked">
+                        <div class="badge-icon">�</div>
+                        <div class="lock-icon">🔒</div>
+                    </div>
+                    <div class="achievement-info">
+                        <h3 class="achievement-title">Perfect Week</h3>
+                        <p class="achievement-description">Complete all daily goals for 7 days</p>
+                        <div class="achievement-progress">
+                            <div class="progress-bar small">
+                                <div class="progress-fill" style="width: 57%"></div>
+                            </div>
+                            <span class="progress-text">4/7 days</span>
+                        </div>
+                    </div>
+                    <div class="achievement-points">+400 XP</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Activity -->
+        <section class="recent-activity">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-clock"></i>
+                    Recent Activity
+                </h2>
+            </div>
+            
+            <div class="activity-timeline">
+                <div class="activity-item">
+                    <div class="activity-icon earned">⚡</div>
+                    <div class="activity-content">
+                        <h4>Speed Demon Achievement Unlocked!</h4>
+                        <p>You completed 5 tasks in under 30 minutes</p>
+                        <span class="activity-time">2 hours ago</span>
+                    </div>
+                    <div class="activity-points">+150 XP</div>
+                </div>
+                
+                <div class="activity-item">
+                    <div class="activity-icon progress">📈</div>
+                    <div class="activity-content">
+                        <h4>Progress Update</h4>
+                        <p>You're 89% towards earning "Study Master"</p>
+                        <span class="activity-time">1 day ago</span>
+                    </div>
+                </div>
+                
+                <div class="activity-item">
+                    <div class="activity-icon earned">�</div>
+                    <div class="activity-content">
+                        <h4>Week Warrior Achievement Unlocked!</h4>
+                        <p>You maintained a 7-day study streak</p>
+                        <span class="activity-time">3 days ago</span>
+                    </div>
+                    <div class="activity-points">+200 XP</div>
+                </div>
+            </div>        </section>
     </div>
-    
-    <div class="main-content">
-      <!-- Your chat content will go here -->
-    </div>
-    
+
+    <script src="scripts/global-profile-manager.js"></script>
+    <script src="scripts/global-stats-manager.js"></script>
+    <script src="scripts/customization-loader.js"></script>
+    <script src="scripts/auto-hide-navigation.js"></script>
+    <script src="scripts/achievements.js"></script>
     <script src="scripts/system.js"></script>
   </body>
 </html>

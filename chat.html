@@ -3,23 +3,29 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Remi - AI Student Assistant</title>
-    <link rel="stylesheet" href="styles/chat.css"> <!-- This links your crayons (CSS) -->
-    <link rel="stylesheet" href="styles/main.css"> <!-- This links your crayons (CSS) -->
+    <title>Chat with Remi - AI Student Assistant</title>
+    <meta name="description" content="Chat with Remi, your AI study companion. Get help with tasks, ask questions, and build your relationship through engaging conversations.">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/chat.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   </head>
   <body>
+    <!-- Sidebar -->
     <div class="sidebar">
       <div class="sidebar-header sidebar-toggle">
         <i class="fas fa-bars"></i>
       </div>
       <nav class="sidebar-icons">
-        <a href="chat.html" class="sidebar-item">
+        <a href="index.html" class="sidebar-item">
+          <i class="fas fa-home"></i>
+          <span class="icon-description">Home</span>
+        </a>
+        <a href="chat.html" class="sidebar-item active">
           <i class="fas fa-message"></i>
           <span class="icon-description">Chat</span>
         </a>
         <a href="tasks.html" class="sidebar-item">
-          <i class="fas fa-book"></i>
+          <i class="fas fa-tasks"></i>
           <span class="icon-description">Tasks</span>
         </a>
         <a href="schedule.html" class="sidebar-item">
@@ -27,8 +33,20 @@
           <span class="icon-description">Schedule</span>
         </a>
         <a href="achievements.html" class="sidebar-item">
-          <i class="fas fa-lightbulb"></i>
+          <i class="fas fa-trophy"></i>
           <span class="icon-description">Achievements</span>
+        </a>
+        <a href="tracker.html" class="sidebar-item">
+          <i class="fas fa-chart-line"></i>
+          <span class="icon-description">Tracker</span>
+        </a>
+        <a href="customization.html" class="sidebar-item">
+          <i class="fas fa-heart"></i>
+          <span class="icon-description">Customization</span>
+        </a>
+        <a href="shop.html" class="sidebar-item">
+          <i class="fas fa-store"></i>
+          <span class="icon-description">Shop</span>
         </a>
         <a href="settings.html" class="sidebar-item">
           <i class="fas fa-cog"></i>
@@ -37,35 +55,211 @@
       </nav>
     </div>
     
+    <!-- Topbar -->
     <div class="topbar-menu">
-      <img src="pfp/Shinobu-Sticker.png" class="topbar-logo">
-      <span class="topbar-title"><img src="pfp/Remi-Logo-removebg-preview (1).png" class="main-logo"></span>
-      <div>
-        <button class="toggle-dark-button"><i class="fas fa-moon toggle-icon"></i></button>
+      <img src="pfp/Shinobu-Sticker.png" class="topbar-logo" alt="Shinobu">
+      <div class="topbar-title">
+        <img src="pfp/Remi-Logo-removebg-preview (1).png" class="main-logo" alt="Remi Logo">
+      </div>
+      <div class="topbar-actions">
+        <button class="toggle-dark-button" title="Toggle Dark Mode">
+          <i class="fas fa-moon toggle-icon"></i>
+        </button>
       </div>
     </div>
-    <div class="chat-list">
-      <div class="chat-list-buttons">
-        <button class="new-chat-button"><i class="fas fa-angle-left"></i></button>
-        <button class="list-button-controller"><i class="fas fa-add"></i></button>
-        <input type="text" class="search-input" placeholder="Search chats...">
-        <button class="search-button"><i class="fas fa-search"></i></button>
-      </div>
-      <div class="chat-list-container" id="chatListContainer">
-      </div>
-    </div>
+
+    <!-- Main Content -->
     <div class="main-content">
-      <div class="chat-container">
-        <div class="chat-messages" id="chatMessages" data-chat-id="123456"> 
+      <!-- Chat Header -->
+      <div class="chat-header">
+        <div class="chat-header-info">
+          <div class="remi-status">
+            <div class="remi-avatar">
+              <img src="pfp/Remi-pfp.png" alt="Remi" class="avatar-image" id="headerAvatar" data-remi-avatar>
+              <div class="status-indicator online"></div>
+            </div>
+            <div class="chat-title-info">
+              <h2 class="chat-title" data-remi-name>Remi</h2>
+              <div class="relationship-info">
+                <span class="relationship-level">Friend</span>
+                <div class="relationship-meter">
+                  <div class="meter-fill" style="width: 65%"></div>
+                </div>
+                <span class="relationship-percentage">65%</span>
+              </div>
+              <p class="remi-mood">
+                <i class="fas fa-heart mood-icon"></i>
+                <span class="mood-text">Excited to help you learn!</span>
+              </p>
+            </div>
+          </div>
+          <div class="chat-actions">
+            <button class="action-btn" id="profileToggle" title="View Profile">
+              <i class="fas fa-user"></i>
+            </button>
+            <button class="action-btn" id="newChatBtn" title="New Chat">
+              <i class="fas fa-plus"></i>
+            </button>
+            <button class="action-btn" id="chatHistoryBtn" title="Chat History">
+              <i class="fas fa-history"></i>
+            </button>
+            <button class="action-btn" id="helpBtn" title="Help">
+              <i class="fas fa-question-circle"></i>
+            </button>
+          </div>
         </div>
-        <div class="chat-input">
-          <textarea type="text" class="message-input" id="messageInput" placeholder="Type your message here..."></textarea>
-          <button class="send-message-button"><i class="fas fa-paper-plane"></i></button>
+      </div>
+
+      <!-- Chat Container -->
+      <div class="chat-container">
+        <!-- Quick Actions -->
+
+        <!-- Chat Messages Area -->
+        <div class="chat-messages-wrapper">
+          <div class="chat-messages" id="chatMessages">
+            <!-- Messages will be inserted here -->
+          </div>
+        </div>
+
+        <!-- Chat Input -->
+        <div class="chat-input-container">
+          <div class="input-wrapper">
+            <button class="attachment-btn" id="attachmentBtn" title="Attach File">
+              <i class="fas fa-paperclip"></i>
+            </button>
+            <div class="input-field-wrapper">
+              <textarea 
+                id="messageInput" 
+                class="message-input" 
+                placeholder="Ask Remi anything or type '/' for commands..."
+                rows="1"
+              ></textarea>
+              <div class="input-suggestions" id="inputSuggestions"></div>
+            </div>
+            <button class="emoji-btn" id="emojiBtn" title="Add Emoji">
+              <i class="fas fa-smile"></i>
+            </button>
+            <button class="send-message-button" id="sendBtn" title="Send Message">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </div>
+          <div class="chat-footer">
+            <div class="typing-status" id="typingStatus"></div>
+            <div class="input-commands">
+              <span class="command-hint">
+                Try: <code>/help</code>, <code>/task</code>, or just chat naturally!
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <script src="scripts/chat.js"></script>
+    <!-- Chat History Sidebar -->
+    <div class="chat-list" id="chatHistoryPanel">
+      <div class="history-header">
+        <h3>Chat History</h3>
+        <button class="close-panel-btn" id="closeChatHistory">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="chat-list-buttons">
+        <button class="new-chat-button" id="newChatFromHistory">
+          <i class="fas fa-plus"></i>
+          <span>New Chat</span>
+        </button>
+        <input type="text" class="search-input" placeholder="Search chats..." id="chatSearch">
+        <button class="search-button" id="searchBtn">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+      <div class="chat-list-container" id="chatListContainer">
+        <!-- Chat history items will be populated here -->
+      </div>
+    </div>
+
+    <!-- Remi Profile Panel -->
+    <div class="ai-profile" id="remiProfilePanel">
+      <div class="profile-header">
+        <h3>Remi's Profile</h3>
+        <button class="close-profile-button" id="closeProfile">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="profile-content">
+        <div class="image-profile-container">
+          <img src="pfp/Remi-pfp.png" alt="Remi" id="mainProfilePic">
+          <button class="edit-profile-button" id="edit-profile-button">
+            <i class="fas fa-camera"></i>
+          </button>
+          <input type="file" id="profilePicInput" accept="image/*" style="display: none;">
+        </div>
+        
+        <div class="ai-information">
+          <h2 class="ai-name">Remi</h2>
+          <div class="ai-profile-description">
+            Your AI Study Companion - I'm here to help you learn, stay organized, and achieve your academic goals!
+          </div>
+          <p class="ai-status">
+            <i class="fas fa-circle online-dot"></i>
+            Online & Ready to Help
+          </p>
+        </div>
+        
+        <div class="ai-profile-stats">
+          <div class="stat-group">
+            <h4>Study Stats</h4>
+            <div class="stat-item">
+              <span class="stat-label">Tasks Completed</span>
+              <span class="stat-value" id="tasksCompleted" data-stat="tasks-completed">0</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Current Level</span>
+              <span class="stat-value" id="currentLevel" data-stat="current-level">1</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Streak Days</span>
+              <span class="stat-value" id="streakDays" data-stat="streak-days">0</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Late Tasks</span>
+              <span class="stat-value" id="lateTasks" data-stat="late-tasks">0</span>
+            </div>
+          </div>
+          
+          <div class="stat-group">
+            <h4>Relationship</h4>
+            <div class="stat-item">
+              <span class="stat-label">Status</span>
+              <span class="stat-value" data-stat="relationship-status">Stranger</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Progress</span>
+              <span class="stat-value" data-stat="relationship-progress">0% - Just getting started!</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Productivity Score</span>
+              <span class="stat-value" id="productivityScore" data-stat="productivity-score">0%</span>
+            </div>
+          </div>
+          
+          <div class="stat-group">
+            <h4>Current Mood</h4>
+            <div class="mood-display">
+              <div class="mood-emoji">😊</div>
+              <div class="mood-description">
+                Happy and ready to help with your studies!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>    <!-- Overlay for panels -->
+    <div class="panel-overlay" id="panelOverlay"></div>
+    
+    <script src="scripts/global-stats-manager.js"></script>
+    <script src="scripts/customization-loader.js"></script>
+    <script type="module" src="scripts/chat.js"></script>
     <script src="scripts/system.js"></script>
   </body>
 </html>

@@ -3,34 +3,497 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Remi - Your Study Buddy</title>
-    <link rel="stylesheet" href="styles/style.css"> <!-- This links your crayons (CSS) -->
+    <title>Settings - Remi AI Assistant</title>
+    <meta name="description" content="Manage your profile settings, customize Remi's appearance, and configure application preferences.">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/settings.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   </head>
   <body>
+</html>flare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Sidebar -->
     <div class="sidebar">
-      <div class="sidebar-header">R<span class="other-characters">emi</span></div>
+      <div class="sidebar-header sidebar-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
       <nav class="sidebar-icons">
-        <i class="fas fa-message"><a href="chat.html" class="icon-description">Chat</a></i>
-        <i class="fas fa-book"><a href="tasks.html" class="icon-description">Tasks</a></i>
-        <i class="fas fa-calendar-alt"><a href="schedule.html" class="icon-description">Schedule</a></i>
-        <i class="fas fa-lightbulb"><a href="achievements.html" class="icon-description">Achievements</a></i>
-        <i class="fas fa-cog"><a href="schedule.html" class="icon-description">Settings</a></i>
+        <a href="index.html" class="sidebar-item">
+          <i class="fas fa-home"></i>
+          <span class="icon-description">Home</span>
+        </a>
+        <a href="chat.html" class="sidebar-item">
+          <i class="fas fa-message"></i>
+          <span class="icon-description">Chat</span>
+        </a>
+        <a href="tasks.html" class="sidebar-item">
+          <i class="fas fa-tasks"></i>
+          <span class="icon-description">Tasks</span>
+        </a>
+        <a href="schedule.html" class="sidebar-item">
+          <i class="fas fa-calendar-alt"></i>
+          <span class="icon-description">Schedule</span>
+        </a>
+        <a href="achievements.html" class="sidebar-item">
+          <i class="fas fa-trophy"></i>
+          <span class="icon-description">Achievements</span>
+        </a>
+        <a href="tracker.html" class="sidebar-item">
+          <i class="fas fa-chart-line"></i>
+          <span class="icon-description">Tracker</span>
+        </a>
+        <a href="customization.html" class="sidebar-item">
+          <i class="fas fa-heart"></i>
+          <span class="icon-description">Customization</span>
+        </a>
+        <a href="shop.html" class="sidebar-item">
+          <i class="fas fa-store"></i>
+          <span class="icon-description">Shop</span>
+        </a>
+        <a href="settings.html" class="sidebar-item active">
+          <i class="fas fa-cog"></i>
+          <span class="icon-description">Settings</span>
+        </a>
       </nav>
     </div>
     
+    <!-- Topbar -->
     <div class="topbar-menu">
-      <img src="pfp/Shinobu-Sticker.png" class="topbar-logo">
-      <span class="topbar-title"><img src="pfp/Remi-Logo-removebg-preview (1).png" class="main-logo"></span>
-      <div>
-        <button class="toggle-dark-button"><i class="fas fa-moon toggle-icon"></i></button>
+      <img src="pfp/Shinobu-Sticker.png" class="topbar-logo" alt="Shinobu">
+      <div class="topbar-title">
+        <img src="pfp/Remi-Logo-removebg-preview (1).png" class="main-logo" alt="Remi Logo">
+      </div>
+      <div class="topbar-actions">
+        <button class="toggle-dark-button" title="Toggle Dark Mode">
+          <i class="fas fa-moon toggle-icon"></i>
+        </button>
       </div>
     </div>
-    
+
+    <!-- Main Content -->
     <div class="main-content">
-      <!-- Your chat content will go here -->
+      <div class="settings-container">
+        <!-- Settings Header -->
+        <div class="settings-header">
+          <div class="header-content">
+            <i class="fas fa-cog header-icon"></i>
+            <h1>Settings</h1>
+            <p>Manage your profile, customize Remi, and configure your preferences</p>
+          </div>
+        </div>
+
+        <!-- Settings Navigation -->
+        <div class="settings-nav">
+          <button class="settings-nav-item active" data-section="profiles">
+            <i class="fas fa-user-circle"></i>
+            <span>Profiles</span>
+          </button>
+          <button class="settings-nav-item" data-section="appearance">
+            <i class="fas fa-palette"></i>
+            <span>Appearance</span>
+          </button>
+          <button class="settings-nav-item" data-section="notifications">
+            <i class="fas fa-bell"></i>
+            <span>Notifications</span>
+          </button>
+          <button class="settings-nav-item" data-section="privacy">
+            <i class="fas fa-shield-alt"></i>
+            <span>Privacy</span>
+          </button>
+          <button class="settings-nav-item" data-section="advanced">
+            <i class="fas fa-sliders-h"></i>
+            <span>Advanced</span>
+          </button>
+        </div>
+
+        <!-- Settings Content -->
+        <div class="settings-content">
+          
+          <!-- Profile Settings Section -->
+          <div class="settings-section active" id="profiles-section">
+            <div class="section-header">
+              <h2>Profile Management</h2>
+              <p>Customize your profile and Remi's appearance</p>
+            </div>
+
+            <!-- User Profile Card -->
+            <div class="profile-card user-profile">
+              <div class="profile-header">
+                <i class="fas fa-user"></i>
+                <h3>Your Profile</h3>
+              </div>
+              <div class="profile-content">
+                <div class="profile-picture-section">
+                  <div class="profile-picture-container">
+                    <img src="pfp/Google_2015_logo.svg.png" alt="User Profile" id="userProfilePic" class="profile-picture">
+                    <div class="profile-picture-overlay">
+                      <button class="change-picture-btn" id="changeUserPicBtn">
+                        <i class="fas fa-camera"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <input type="file" id="userProfileInput" accept="image/*" style="display: none;">
+                </div>
+                
+                <div class="profile-info-section">
+                  <div class="form-group">
+                    <label for="userName">Display Name</label>
+                    <input type="text" id="userName" class="form-input" placeholder="Enter your name" value="Student">
+                    <small class="form-help">This name will appear across all pages</small>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="userTitle">Title/Role</label>
+                    <input type="text" id="userTitle" class="form-input" placeholder="e.g., Student, Learner" value="Student">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="userBio">Bio</label>
+                    <textarea id="userBio" class="form-textarea" placeholder="Tell us about yourself" rows="3">Dedicated student working with Remi AI to achieve academic goals.</textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Remi Profile Card -->
+            <div class="profile-card remi-profile">
+              <div class="profile-header">
+                <i class="fas fa-robot"></i>
+                <h3>Remi's Profile</h3>
+              </div>
+              <div class="profile-content">
+                <div class="profile-picture-section">
+                  <div class="profile-picture-container">
+                    <img src="pfp/Remi-pfp.png" alt="Remi Profile" id="remiProfilePic" class="profile-picture">
+                    <div class="profile-picture-overlay">
+                      <button class="change-picture-btn" id="changeRemiPicBtn">
+                        <i class="fas fa-camera"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <input type="file" id="remiProfileInput" accept="image/*" style="display: none;">
+                </div>
+                
+                <div class="profile-info-section">
+                  <div class="form-group">
+                    <label for="remiName">AI Assistant Name</label>
+                    <input type="text" id="remiName" class="form-input" placeholder="Enter AI name" value="Remi">
+                    <small class="form-help">This name will appear across all pages and conversations</small>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="remiPersonality">Personality</label>
+                    <select id="remiPersonality" class="form-select">
+                      <option value="friendly">Friendly & Supportive</option>
+                      <option value="professional">Professional & Focused</option>
+                      <option value="casual">Casual & Relaxed</option>
+                      <option value="enthusiastic">Enthusiastic & Motivating</option>
+                      <option value="wise">Wise & Thoughtful</option>
+                    </select>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="remiDescription">Description</label>
+                    <textarea id="remiDescription" class="form-textarea" placeholder="Describe your AI assistant" rows="3">Your AI Study Companion - I'm here to help you learn, stay organized, and achieve your academic goals!</textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Profile Actions -->
+            <div class="profile-actions">
+              <button class="btn btn-primary" id="saveProfilesBtn">
+                <i class="fas fa-save"></i>
+                Save Changes
+              </button>
+              <button class="btn btn-secondary" id="resetProfilesBtn">
+                <i class="fas fa-undo"></i>
+                Reset to Default
+              </button>
+              <button class="btn btn-success" id="exportProfilesBtn">
+                <i class="fas fa-download"></i>
+                Export Profiles
+              </button>
+              <button class="btn btn-info" id="importProfilesBtn">
+                <i class="fas fa-upload"></i>
+                Import Profiles
+              </button>
+            </div>
+          </div>
+
+          <!-- Appearance Settings Section -->
+          <div class="settings-section" id="appearance-section">
+            <div class="section-header">
+              <h2>Appearance Settings</h2>
+              <p>Customize the visual appearance of the application</p>
+            </div>
+
+            <div class="settings-grid">
+              <div class="setting-item">
+                <div class="setting-header">
+                  <i class="fas fa-moon"></i>
+                  <h4>Theme</h4>
+                </div>
+                <div class="setting-content">
+                  <select id="themeSelect" class="form-select">
+                    <option value="auto">Auto (System)</option>
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <i class="fas fa-text-height"></i>
+                  <h4>Font Size</h4>
+                </div>
+                <div class="setting-content">
+                  <input type="range" id="fontSizeSlider" min="12" max="20" value="16" class="slider">
+                  <span id="fontSizeValue">16px</span>
+                </div>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <i class="fas fa-compress-arrows-alt"></i>
+                  <h4>Compact Mode</h4>
+                </div>
+                <div class="setting-content">
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="compactModeToggle">
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <i class="fas fa-eye-slash"></i>
+                  <h4>Auto-Hide Navigation</h4>
+                  <p class="setting-description">Hide topbar and sidebar until mouse approaches edges (Ctrl+H to toggle)</p>
+                </div>
+                <div class="setting-content">
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="autoHideToggle">
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <i class="fas fa-magic"></i>
+                  <h4>Animations</h4>
+                </div>
+                <div class="setting-content">
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="animationsToggle" checked>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notifications Settings Section -->
+          <div class="settings-section" id="notifications-section">
+            <div class="section-header">
+              <h2>Notification Settings</h2>
+              <p>Configure how and when you receive notifications</p>
+            </div>
+
+            <div class="settings-grid">
+              <div class="setting-item">
+                <div class="setting-header">
+                  <i class="fas fa-bell"></i>
+                  <h4>Task Reminders</h4>
+                </div>
+                <div class="setting-content">
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="taskRemindersToggle" checked>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <i class="fas fa-trophy"></i>
+                  <h4>Achievement Notifications</h4>
+                </div>
+                <div class="setting-content">
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="achievementNotificationsToggle" checked>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <i class="fas fa-volume-up"></i>
+                  <h4>Sound Effects</h4>
+                </div>
+                <div class="setting-content">
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="soundEffectsToggle" checked>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Privacy Settings Section -->
+          <div class="settings-section" id="privacy-section">
+            <div class="section-header">
+              <h2>Privacy & Security</h2>
+              <p>Manage your privacy and data security settings</p>
+            </div>
+
+            <div class="settings-grid">
+              <div class="setting-item">
+                <div class="setting-header">
+                  <i class="fas fa-history"></i>
+                  <h4>Chat History</h4>
+                </div>
+                <div class="setting-content">
+                  <button class="btn btn-warning" id="clearChatHistoryBtn">
+                    <i class="fas fa-trash"></i>
+                    Clear History
+                  </button>
+                </div>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <i class="fas fa-database"></i>
+                  <h4>Local Data</h4>
+                </div>
+                <div class="setting-content">
+                  <button class="btn btn-warning" id="clearLocalDataBtn">
+                    <i class="fas fa-trash"></i>
+                    Clear All Data
+                  </button>
+                </div>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <i class="fas fa-user-secret"></i>
+                  <h4>Privacy Mode</h4>
+                </div>
+                <div class="setting-content">
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="privacyModeToggle">
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Advanced Settings Section -->
+          <div class="settings-section" id="advanced-section">
+            <div class="section-header">
+              <h2>Advanced Settings</h2>
+              <p>Advanced configuration options for power users</p>
+            </div>
+
+            <div class="settings-grid">
+              <div class="setting-item">
+                <div class="setting-header">
+                  <i class="fas fa-code"></i>
+                  <h4>Developer Mode</h4>
+                </div>
+                <div class="setting-content">
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="developerModeToggle">
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <i class="fas fa-download"></i>
+                  <h4>Auto-Save</h4>
+                </div>
+                <div class="setting-content">
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="autoSaveToggle" checked>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <i class="fas fa-sync"></i>
+                  <h4>Auto Backup</h4>
+                </div>
+                <div class="setting-content">
+                  <select id="backupFrequency" class="form-select">
+                    <option value="never">Never</option>
+                    <option value="daily">Daily</option>
+                    <option value="weekly" selected>Weekly</option>
+                    <option value="monthly">Monthly</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <i class="fas fa-cogs"></i>
+                  <h4>Reset Application</h4>
+                </div>
+                <div class="setting-content">
+                  <button class="btn btn-danger" id="resetAppBtn">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    Factory Reset
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- Hidden file inputs for import functionality -->
+    <input type="file" id="importProfilesInput" accept=".json" style="display: none;">
     
+    <!-- Confirmation Modal -->
+    <div class="modal-overlay" id="confirmationModal">
+      <div class="modal">
+        <div class="modal-header">
+          <h3 id="modalTitle">Confirm Action</h3>
+        </div>
+        <div class="modal-body">
+          <p id="modalMessage">Are you sure you want to perform this action?</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" id="modalCancelBtn">Cancel</button>
+          <button class="btn btn-danger" id="modalConfirmBtn">Confirm</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+      <div class="notification-content">
+        <i class="notification-icon"></i>
+        <span class="notification-message"></span>
+      </div>
+    </div>
+
+    <script src="scripts/global-profile-manager.js"></script>
+    <script src="scripts/image-storage.js"></script>
+    <script src="scripts/storage-manager.js"></script>
+    <script src="scripts/customization-loader.js"></script>
+    <script src="scripts/settings.js"></script>
     <script src="scripts/system.js"></script>
   </body>
 </html>

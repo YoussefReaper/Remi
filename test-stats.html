@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stats Test - Remi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .stat-display {
+            display: flex;
+            gap: 20px;
+            margin: 10px 0;
+        }
+        .stat-item {
+            padding: 10px;
+            background: #f5f5f5;
+            border-radius: 4px;
+            min-width: 100px;
+            text-align: center;
+        }
+        .test-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .test-btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Remi Stats System Test</h1>
+    
+    <div class="test-section">
+        <h2>Current Task Statistics</h2>
+        <div class="stat-display">
+            <div class="stat-item">
+                <strong>Completed</strong><br>
+                <span data-stat="completed">0</span>
+            </div>
+            <div class="stat-item">
+                <strong>Pending</strong><br>
+                <span data-stat="pending">0</span>
+            </div>
+            <div class="stat-item">
+                <strong>Late</strong><br>
+                <span data-stat="late">0</span>
+            </div>
+            <div class="stat-item">
+                <strong>Due Today</strong><br>
+                <span data-stat="dueToday">0</span>
+            </div>
+            <div class="stat-item">
+                <strong>Streak</strong><br>
+                <span data-stat="streak">0</span>
+            </div>
+            <div class="stat-item">
+                <strong>Productivity</strong><br>
+                <span data-stat="productivity">0%</span>
+            </div>
+            <div class="stat-item">
+                <strong>Relationship</strong><br>
+                <span data-stat="relationship">0%</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test Actions</h2>
+        <button class="test-btn" onclick="createTestTask()">Create Test Task</button>
+        <button class="test-btn" onclick="createLateTask()">Create Late Task</button>
+        <button class="test-btn" onclick="createDueTodayTask()">Create Due Today Task</button>
+        <button class="test-btn" onclick="completeRandomTask()">Complete Random Task</button>
+        <button class="test-btn" onclick="clearAllTasks()">Clear All Tasks</button>
+        <button class="test-btn" onclick="forceRefreshStats()">Force Refresh Stats</button>
+    </div>
+
+    <div class="test-section">
+        <h2>All Tasks</h2>
+        <div id="tasksList"></div>
+    </div>
+
+    <script src="scripts/global-stats-manager.js"></script>
+    <script>
+        // Test functions
+        function createTestTask() {
+            const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            
+            const newTask = {
+                id: Date.now(),
+                text: `Test Task ${Date.now()}`,
+                completed: false,
+                priority: 'medium',
+                dueDate: tomorrow.toISOString().split('T')[0],
+                createdAt: new Date().toISOString()
+            };
+            
+            tasks.push(newTask);
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+            window.dispatchEvent(new CustomEvent('tasksUpdated'));
+            displayTasks();
+        }
+
+        function createLateTask() {
+            const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+            const yesterday = new Date();
+            yesterday.setDate(yesterday.getDate() - 1);
+            
+            const newTask = {
+                id: Date.now(),
+                text: `Late Task ${Date.now()}`,
+                completed: false,
+                priority: 'high',
+                dueDate: yesterday.toISOString().split('T')[0],
+                createdAt: new Date().toISOString()
+            };
+            
+            tasks.push(newTask);
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+            window.dispatchEvent(new CustomEvent('tasksUpdated'));
+            displayTasks();
+        }
+
+        function createDueTodayTask() {
+            const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+            const today = new Date();
+            
+            const newTask = {
+                id: Date.now(),
+                text: `Due Today Task ${Date.now()}`,
+                completed: false,
+                priority: 'high',
+                dueDate: today.toISOString().split('T')[0],
+                createdAt: new Date().toISOString()
+            };
+            
+            tasks.push(newTask);
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+            window.dispatchEvent(new CustomEvent('tasksUpdated'));
+            displayTasks();
+        }
+
+        function completeRandomTask() {
+            const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+            const incompleteTasks = tasks.filter(task => !task.completed);
+            
+            if (incompleteTasks.length > 0) {
+                const randomTask = incompleteTasks[Math.floor(Math.random() * incompleteTasks.length)];
+                randomTask.completed = true;
+                randomTask.completedAt = new Date().toISOString();
+                
+                localStorage.setItem('tasks', JSON.stringify(tasks));
+                window.dispatchEvent(new CustomEvent('tasksUpdated'));
+                displayTasks();
+            }
+        }
+
+        function clearAllTasks() {
+            localStorage.setItem('tasks', '[]');
+            window.dispatchEvent(new CustomEvent('tasksUpdated'));
+            displayTasks();
+        }
+
+        function forceRefreshStats() {
+            if (window.globalStatsManager) {
+                window.globalStatsManager.forceRefresh();
+            }
+        }
+
+        function displayTasks() {
+            const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+            const tasksList = document.getElementById('tasksList');
+            
+            tasksList.innerHTML = tasks.map(task => {
+                const dueDate = new Date(task.dueDate);
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                dueDate.setHours(0, 0, 0, 0);
+                
+                let status = 'pending';
+                if (task.completed) {
+                    status = 'completed';
+                } else if (dueDate < today) {
+                    status = 'late';
+                } else if (dueDate.getTime() === today.getTime()) {
+                    status = 'due-today';
+                }
+                
+                return `
+                    <div style="padding: 10px; margin: 5px 0; border: 1px solid #ccc; border-radius: 4px; background: ${
+                        status === 'completed' ? '#d4edda' : 
+                        status === 'late' ? '#f8d7da' :
+                        status === 'due-today' ? '#fff3cd' : '#e2e3e5'
+                    }">
+                        <strong>${task.text}</strong> (${status})<br>
+                        Due: ${task.dueDate}<br>
+                        Priority: ${task.priority}
+                        ${task.completedAt ? `<br>Completed: ${new Date(task.completedAt).toLocaleString()}` : ''}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            displayTasks();
+            console.log('Stats test page loaded');
+        });
+
+        // Listen for stats updates
+        document.addEventListener('statsUpdated', function(event) {
+            console.log('Stats updated:', event.detail);
+        });
+    </script>
+</body>
+</html>

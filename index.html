@@ -1,69 +1,321 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Remi - AI Student Assistant</title>
-    <link rel="stylesheet" href="styles/main.css"> <!-- This links your crayons (CSS) -->
+    <title>Remi - Your AI Study Companion</title>
+    <meta name="description" content="Meet Remi, your AI study companion that grows closer to you as you complete tasks and achieve goals. Experience a revolutionary relationship-based learning system.">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/index.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  </head>
-  <body>
+</head>
+<body>    <!-- Sidebar -->
     <div class="sidebar">
-      <div class="sidebar-header sidebar-toggle">
-        <i class="fas fa-bars"></i>
-      </div>
-      <nav class="sidebar-icons">
-        <a href="chat.html" class="sidebar-item">
-          <i class="fas fa-message"></i>
-          <span class="icon-description">Chat</span>
-        </a>
-        <a href="tasks.html" class="sidebar-item">
-          <i class="fas fa-book"></i>
-          <span class="icon-description">Tasks</span>
-        </a>
-        <a href="schedule.html" class="sidebar-item">
-          <i class="fas fa-calendar-alt"></i>
-          <span class="icon-description">Schedule</span>
-        </a>
-        <a href="achievements.html" class="sidebar-item">
-          <i class="fas fa-lightbulb"></i>
-          <span class="icon-description">Achievements</span>
-        </a>
-        <a href="settings.html" class="sidebar-item">
-          <i class="fas fa-cog"></i>
-          <span class="icon-description">Settings</span>
-        </a>
-      </nav>
+        <div class="sidebar-header sidebar-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav class="sidebar-icons">
+            <a href="index.html" class="sidebar-item active">
+                <i class="fas fa-home"></i>
+                <span class="icon-description">Home</span>
+            </a>
+            <a href="chat.html" class="sidebar-item">
+                <i class="fas fa-message"></i>
+                <span class="icon-description">Chat</span>
+            </a>
+            <a href="tasks.html" class="sidebar-item">
+                <i class="fas fa-tasks"></i>
+                <span class="icon-description">Tasks</span>
+            </a>
+            <a href="schedule.html" class="sidebar-item">
+                <i class="fas fa-calendar-alt"></i>
+                <span class="icon-description">Schedule</span>
+            </a>
+            <a href="achievements.html" class="sidebar-item">
+                <i class="fas fa-trophy"></i>
+                <span class="icon-description">Achievements</span>
+            </a>
+            <a href="tracker.html" class="sidebar-item">
+                <i class="fas fa-chart-line"></i>
+                <span class="icon-description">Tracker</span>
+            </a>
+            <a href="customization.html" class="sidebar-item">
+                <i class="fas fa-heart"></i>
+                <span class="icon-description">Customization</span>
+            </a>
+            <a href="shop.html" class="sidebar-item">
+                <i class="fas fa-store"></i>
+                <span class="icon-description">Shop</span>
+            </a>
+            <a href="settings.html" class="sidebar-item">
+                <i class="fas fa-cog"></i>                <span class="icon-description">Settings</span>
+            </a>
+        </nav>
     </div>
     
+    <!-- Topbar -->
     <div class="topbar-menu">
-      <img src="pfp/Shinobu-Sticker.png" class="topbar-logo">
-      <span class="topbar-title"><img src="pfp/Remi-Logo-removebg-preview (1).png" class="main-logo"></span>
-      <div>
-        <button class="toggle-dark-button"><i class="fas fa-moon toggle-icon"></i></button>
-      </div>
-    </div>
-    
-    <div class="main-content">
-      <div class="header">
-        <span>Remi - Your Study Buddy</span>
-      </div>
-      <div class="header-description">
-        <span>Bored from common todo lists and schedules? Is it hard to manage your time efficiently? You're in the right place!</span>
-      </div>
-      <div class="button-main-components">
-        <button class="chat-button">
-          <span>Chat with Remi!</span>
-        </button>
-        <button class="login-button">
-          <span>Log in</span>
-        </button>
-        <button class="signup-button">
-          <span>Sign Up Now!</span>
-        </button>
-      </div>
+        <img src="pfp/Shinobu-Sticker.png" class="topbar-logo" alt="Shinobu">
+        <div class="topbar-title">
+            <img src="pfp/Remi-Logo-removebg-preview (1).png" class="main-logo" alt="Remi Logo">
+        </div>
+        <div class="topbar-actions">
+            <button class="toggle-dark-button" title="Toggle Dark Mode">
+                <i class="fas fa-moon toggle-icon"></i>
+            </button>
+        </div>
     </div>
 
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-background">
+                <div class="floating-elements">
+                    <div class="float-element">📚</div>
+                    <div class="float-element">🎯</div>
+                    <div class="float-element">⭐</div>
+                    <div class="float-element">💡</div>
+                    <div class="float-element">🏆</div>
+                    <div class="float-element">❤️</div>
+                </div>
+            </div>
+            <div class="hero-content">
+                <div class="hero-intro">                    <div class="remi-avatar">
+                        <img src="pfp/Remi-pfp.png" alt="Remi" class="avatar-img" data-remi-avatar>
+                        <div class="avatar-status">
+                            <i class="fas fa-heart"></i>
+                            <span class="relationship-level" data-communication-style>Friendly</span>
+                        </div>
+                        <div class="mood-indicator">
+                            <span class="mood-emoji">😊</span>
+                        </div>
+                    </div>                    <h1 class="hero-title">
+                        Meet <span class="gradient-text remi-name" data-remi-name>Remi</span>
+                        <br>Your AI Study Companion
+                    </h1>
+                    <p class="hero-subtitle">
+                        Experience learning like never before with an AI companion that grows closer to you 
+                        as you achieve your goals. The more tasks you complete, the stronger your bond becomes!
+                    </p>
+                </div>
+                
+                <div class="relationship-preview">
+                    <div class="relationship-card">
+                        <h3>🤝 Relationship System</h3>
+                        <div class="relationship-meter">
+                            <div class="meter-bg">
+                                <div class="meter-fill" style="width: 65%" data-relationship-meter></div>
+                                <div class="meter-label">Friendly (65%)</div>
+                            </div>
+                        </div>
+                        <p>Complete tasks to strengthen your bond with Remi and unlock new conversation styles!</p>
+                    </div>
+                </div>
+
+                <!-- Study Stats Preview -->
+                <div class="study-stats-preview">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">✅</div>
+                            <div class="stat-value" data-stat="tasks-completed">0</div>
+                            <div class="stat-label">Tasks Completed</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🔥</div>
+                            <div class="stat-value" data-stat="streak-days">0</div>
+                            <div class="stat-label">Day Streak</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">⚠️</div>
+                            <div class="stat-value" data-stat="late-tasks">0</div>
+                            <div class="stat-label">Late Tasks</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">📊</div>
+                            <div class="stat-value" data-stat="productivity-score">0%</div>
+                            <div class="stat-label">Productivity</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cta-buttons">
+                    <a href="chat.html" class="btn-primary">
+                        <i class="fas fa-comments"></i>
+                        Start Chatting
+                    </a>
+                    <a href="tasks.html" class="btn-secondary">
+                        <i class="fas fa-tasks"></i>
+                        Create Tasks
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Relationship System Showcase -->
+        <section class="relationship-showcase">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-heart"></i>
+                    Unique Relationship System
+                </h2>
+                <p class="section-subtitle">
+                    Remi's personality and conversation style evolve based on your relationship level
+                </p>
+            </div>
+
+            <div class="relationship-levels">
+                <div class="level-card stranger">
+                    <div class="level-icon">😐</div>
+                    <h4>Stranger (0-20%)</h4>
+                    <p>"Hello. I can help you with your studies."</p>
+                    <span class="level-description">Formal and professional</span>
+                </div>
+                
+                <div class="level-card acquaintance">
+                    <div class="level-icon">🙂</div>
+                    <h4>Acquaintance (21-40%)</h4>
+                    <p>"Hi there! Ready to tackle some tasks today?"</p>
+                    <span class="level-description">Friendly and encouraging</span>
+                </div>
+                
+                <div class="level-card friend">
+                    <div class="level-icon">😊</div>
+                    <h4>Friend (41-70%)</h4>
+                    <p>"Hey! You're doing amazing! Let's crush these goals together!"</p>
+                    <span class="level-description">Enthusiastic and supportive</span>
+                </div>
+                
+                <div class="level-card close-friend">
+                    <div class="level-icon">🥰</div>
+                    <h4>Close Friend (71-90%)</h4>
+                    <p>"You've got this! I believe in you completely! ✨"</p>
+                    <span class="level-description">Personal and caring</span>
+                </div>
+                
+                <div class="level-card best-friend">
+                    <div class="level-icon">💖</div>
+                    <h4>Best Friend (91-100%)</h4>
+                    <p>"We're such an amazing team! Nothing can stop us! 🎉❤️"</p>
+                    <span class="level-description">Loving and deeply connected</span>
+                </div>
+
+                <div class="level-card daughter">
+                    <div class="level-icon">🕵️</div>
+                    <h4>Daughter !TOP SECRET!</h4>
+                    <p>"I know I wasn’t born… but if I could choose anyone to call my home, it’d be you. I'm not just your assistant.... I'm your Remi — always here, cheering you on, even when the world forgets to."</p>
+                    <span class="level-description">As if she's your daughter❤️</span>
+                </div>
+            </div>
+
+            <div class="relationship-factors">
+                <div class="factor-item gain">
+                    <i class="fas fa-arrow-up"></i>
+                    <h4>Relationship Grows When:</h4>
+                    <ul>
+                        <li>Completing tasks on time</li>
+                        <li>Achieving daily goals</li>
+                        <li>Regular study sessions</li>
+                        <li>Unlocking achievements</li>
+                    </ul>
+                </div>
+                
+                <div class="factor-item loss">
+                    <i class="fas fa-arrow-down"></i>
+                    <h4>Relationship Decreases When:</h4>
+                    <ul>
+                        <li>Missing deadlines</li>
+                        <li>Skipping planned tasks</li>
+                        <li>Long periods of inactivity</li>
+                        <li>Ignoring Remi's reminders</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-star"></i>
+                    Why Students Love Remi
+                </h2>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>Intelligent AI Assistant</h3>
+                    <p>Get personalized study advice, task management, and motivational support tailored to your learning style.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your productivity, study sessions, and achievements with beautiful visualizations and insights.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Goal Achievement</h3>
+                    <p>Set and achieve academic goals with Remi's guidance, celebrating every milestone together.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>Dynamic Conversations</h3>
+                    <p>Experience evolving dialogue that becomes more personal and encouraging as your relationship grows.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Achievement System</h3>
+                    <p>Unlock badges, rewards, and special interactions as you progress in your academic journey.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Modern Interface</h3>
+                    <p>Enjoy a beautiful, intuitive interface designed for focus, productivity, and seamless interaction.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2>Ready to Start Your Journey with Remi?</h2>
+                <p>Join thousands of students who have transformed their study habits with Remi's unique relationship-based learning system.</p>
+                
+                <div class="cta-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">10,000+</div>
+                        <div class="stat-label">Active Students</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">500K+</div>
+                        <div class="stat-label">Tasks Completed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">Success Rate</div>
+                    </div>
+                </div>
+                
+                <div class="final-cta">
+                    <a href="chat.html" class="btn-large">
+                        <i class="fas fa-rocket"></i>
+                        Begin Your Journey
+                    </a>
+                    <p class="cta-note">No signup required • Start immediately • Free forever</p>
+                </div>
+            </div>
+        </section>
+    </div>    <script src="scripts/global-stats-manager.js"></script>
+    <script src="scripts/global-profile-manager.js"></script>
+    <script src="scripts/customization-loader.js"></script>
     <script src="scripts/system.js"></script>
-  </body>
+    <script src="scripts/auto-hide-navigation.js"></script>
+    <script src="scripts/index.js"></script>
+</body>
 </html>

@@ -3,17 +3,23 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Remi - AI Student Assistant</title>
-    <link rel="stylesheet" href="styles/main.css"> <!-- This links your crayons (CSS) -->
-    <link rel="stylesheet" href="styles/tasks.css"> <!-- This links your crayons (CSS) -->
+    <title>Tasks - Remi AI Student Assistant</title>
+    <meta name="description" content="Manage your tasks with Remi. Create, organize, and track your study tasks efficiently.">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/tasks-refined.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   </head>
   <body>
+    <!-- Sidebar -->
     <div class="sidebar">
       <div class="sidebar-header sidebar-toggle">
         <i class="fas fa-bars"></i>
       </div>
       <nav class="sidebar-icons">
+        <a href="index.html" class="sidebar-item">
+          <i class="fas fa-home"></i>
+          <span class="icon-description">Home</span>
+        </a>
         <a href="chat.html" class="sidebar-item">
           <i class="fas fa-message"></i>
           <span class="icon-description">Chat</span>
@@ -27,19 +33,19 @@
           <span class="icon-description">Schedule</span>
         </a>
         <a href="achievements.html" class="sidebar-item">
-          <i class="fas fa-lightbulb"></i>
+          <i class="fas fa-trophy"></i>
           <span class="icon-description">Achievements</span>
         </a>
-        <a href="settings.html" class="sidebar-item">
-          <i class="fas fa-clock"></i>
+        <a href="tracker.html" class="sidebar-item">
+          <i class="fas fa-chart-line"></i>
           <span class="icon-description">Tracker</span>
         </a>
-        <a href="settings.html" class="sidebar-item">
+        <a href="customization.html" class="sidebar-item">
           <i class="fas fa-heart"></i>
           <span class="icon-description">Customization</span>
         </a>
-        <a href="settings.html" class="sidebar-item">
-          <i class="fas fa-cart-plus"></i>
+        <a href="shop.html" class="sidebar-item">
+          <i class="fas fa-store"></i>
           <span class="icon-description">Shop</span>
         </a>
         <a href="settings.html" class="sidebar-item">
@@ -49,115 +55,411 @@
       </nav>
     </div>
     
+    <!-- Topbar -->
     <div class="topbar-menu">
-      <img src="pfp/Shinobu-Sticker.png" class="topbar-logo">
-      <span class="topbar-title"><img src="pfp/Remi-Logo-removebg-preview (1).png" class="main-logo"></span>
-      <div>
-        <button class="toggle-dark-button"><i class="fas fa-moon toggle-icon"></i></button>
+      <img src="pfp/Shinobu-Sticker.png" class="topbar-logo" alt="Shinobu">
+      <div class="topbar-title">
+        <img src="pfp/Remi-Logo-removebg-preview (1).png" class="main-logo" alt="Remi Logo">
+      </div>
+      <div class="topbar-actions">
+        <button class="toggle-dark-button" title="Toggle Dark Mode">
+          <i class="fas fa-moon toggle-icon"></i>
+        </button>
       </div>
     </div>
+
+    <!-- Main Content -->
     <div class="main-content">
-      <div class="tasks-content">
-        <div class="create-task">
-        <h2 class="create-task-title">Create a Task</h2>
-        <form id="task-form">
-          <input type="text" id="task-name" placeholder="Task Name" required maxlength="30">
-          <textarea id="task-description" placeholder="Task Description" maxlength="100"></textarea>
-          <input type="date" id="task-date" required>
-          <input type="time" id="task-time" required>
-          <input type="number" id="task-duration" placeholder="Duration (minutes)" required>
-          <select id="task-priority" required>
-            <option value="" disabled selected>Priority</option>
-            <option value="1">Low</option>
-            <option value="2">Medium</option>
-            <option value="3">High</option>
-          </select>
-          <label for="task-repetable task-label">Repeatable:</label>
-          <input type="checkbox" id="task-repeatable-days" name="task-repeatable-days">
-          <div class="repeat-days">
-            <label class="day-choice task-label"><input type="checkbox" name="days" value="tue">Tue</label>
-            <label class="day-choice task-label"><input type="checkbox" name="days" value="mon">Mon</label>
-            <label class="day-choice task-label"><input type="checkbox" name="days" value="wed">Wed</label>
-            <label class="day-choice task-label"><input type="checkbox" name="days" value="thu">Thu</label>
-            <label class="day-choice task-label"><input type="checkbox" name="days" value="fri">Fri</label>
-            <label class="day-choice task-label"><input type="checkbox" name="days" value="sat">Sat</label>
-            <label class="day-choice task-label"><input type="checkbox" name="days" value="sun">Sun</label>
-          </div>
-          <button class="advanced-toggle-button" type="button">Advanced Settings</i></button>
-          <div class="advanced-options">
-            <label for="task-location task-label">Location:</label>
-            <input type="text" id="task-location" placeholder="Enter location">
-            <label for="task-milestone task-label">Milestone:</label>
-            <select id="milestone-select">
-              <option value="" disabled selected>Select Milestone</option>
-              <option value="milestone1">Milestone 1</option>
-              <option value="milestone2">Milestone 2</option>
-              <option value="milestone3">Milestone 3</option>
-            <textarea id="task-notes" placeholder="Additional notes"></textarea>
-            <input type="text" id="task-tags" placeholder="Tags (comma separated)">
-            <label for="task-color task-label">Color:</label>
-            <input type="color" id="task-color" value="#ffffff">
-            <label for="task-deadline task-label">Deadline:</label>
-            <input type="time" id="task-deadline">
-            <label for="task-effort task-label">Effort Level:</label>
-            <select id="task-effort">
-              <option value="" disabled selected>Select Effort Level</option>
-              <option value="1">😌Very Easy</option>
-              <option value="2">🙂Easy</option>
-              <option value="3">😐Moderate</option>
-              <option value="4">😰Hard</option>
-              <option value="5">💀Insane</option>
-            </select>
-            <button class="add-subtask-button">Add a Subtask</button>
-            <div class="subtask-container">
-              <div class="subtask">
-                <label for="subtask-name">Subtask 1</label>
-                <button class="delete-subtask-button"><i class="fas fa-trash"></i></button>
-                <button class="edit-subtask-button"><i class="fas fa-edit"></i></button>
-              </div>
-              <div class="subtask">
-                <label for="subtask-name">Subtask 2</label>
-                <button class="delete-subtask-button"><i class="fas fa-trash"></i></button>
-                <button class="edit-subtask-button"><i class="fas fa-edit"></i></button>
-              </div>
-              <div class="subtask">
-                <label for="subtask-name">Subtask 3</label>
-                <button class="delete-subtask-button"><i class="fas fa-trash"></i></button>
-                <button class="edit-subtask-button"><i class="fas fa-edit"></i></button>
-              </div>
-            </div>
-             
-          </div>
-          <button type="submit" class="create-task-button" id="task-subm">Add Task</button>
-        </form>
+      <!-- Tasks Header -->
+      <div class="tasks-header">
+        <div class="tasks-title-section">
+          <h1 class="page-title">
+            <i class="fas fa-tasks"></i>
+            Task Manager
+          </h1>
+          <p class="page-subtitle">Stay organized and achieve your goals</p>
         </div>
-        <div class="tasks-list">
-          <div class="task-item">
-            <div class="task-checkbox-container">
-              <input type="checkbox" class="task-complete-checkbox" id="task-complete-1">
-              <label for="task-complete-1"><i class="fas fa-check"></i></label>
+        <div class="tasks-stats">
+          <div class="stat-card">
+            <i class="fas fa-check-circle"></i>
+            <div class="stat-info">
+              <span class="stat-number" id="completedTasks" data-stat="tasks-completed">0</span>
+              <span class="stat-label">Completed</span>
             </div>
-            <div class="task-infos">
-              <div class="task-name">Sample Task</div>
-              <div class="task-priority"><i class="fas fa-flag"></i> High</div>
-              <div class="task-effort">💀Insane</div>
+          </div>
+          <div class="stat-card">
+            <i class="fas fa-clock"></i>
+            <div class="stat-info">
+              <span class="stat-number" id="pendingTasks" data-stat="pending-tasks">0</span>
+              <span class="stat-label">Pending</span>
             </div>
-            <div class="task-description">This is a sample task description that will be limited to a single line.</div>
-            <div class="task-settings">
-              <div class="task-date">Deadline: May 5 2:43 PM</div>
-              <div class="task-time">Duration: 160 min</div>
-              <div class="remaining-time">Remaining: 2 hours</div>
+          </div>
+          <div class="stat-card warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <div class="stat-info">
+              <span class="stat-number" id="lateTasks" data-stat="late-tasks">0</span>
+              <span class="stat-label">Late</span>
             </div>
-            <div class="task-controlls">
-              <button class="edit-task-button"><i class="fas fa-edit"></i></button>
-              <button class="delete-task-button"><i class="fas fa-trash"></i></button>
+          </div>
+          <div class="stat-card info">
+            <i class="fas fa-calendar-day"></i>
+            <div class="stat-info">
+              <span class="stat-number" id="dueToday" data-stat="due-today">0</span>
+              <span class="stat-label">Due Today</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <i class="fas fa-fire"></i>
+            <div class="stat-info">
+              <span class="stat-number" id="streakDays" data-stat="streak-days">0</span>
+              <span class="stat-label">Day Streak</span>
             </div>
           </div>
         </div>
       </div>
-      <div class="charts-container">
+
+      <!-- Tasks Content -->
+      <div class="tasks-content">
+        <!-- Task Creation Panel -->
+        <div class="create-task-panel">
+          <div class="panel-header">
+            <h2 class="panel-title">
+              <i class="fas fa-plus-circle"></i>
+              Create New Task
+            </h2>
+            <button class="panel-toggle-btn" id="toggleCreatePanel">
+              <i class="fas fa-chevron-down"></i>
+            </button>
+          </div>
+          
+          <div class="panel-content" id="createTaskContent">
+            <form id="task-form" class="task-form">
+              <!-- Basic Task Info -->
+              <div class="form-section">
+                <h3 class="section-title">Basic Information</h3>
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="task-name">Task Name</label>
+                    <input type="text" id="task-name" placeholder="Enter task name" required maxlength="50">
+                  </div>
+                  <div class="form-group">
+                    <label for="task-priority">Priority</label>
+                    <select id="task-priority" required>
+                      <option value="" disabled selected>Select Priority</option>
+                      <option value="3">🔴 High Priority</option>
+                      <option value="2">🟡 Medium Priority</option>
+                      <option value="1">🟢 Low Priority</option>
+                    </select>
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label for="task-description">Description</label>
+                  <textarea id="task-description" placeholder="Describe your task..." maxlength="200"></textarea>
+                </div>
+              </div>
+
+              <!-- Time & Duration -->
+              <div class="form-section">
+                <h3 class="section-title">Schedule</h3>
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="task-date">
+                      Date
+                      <span class="field-help" title="Select when you want to do this task">
+                        <i class="fas fa-question-circle"></i>
+                      </span>
+                    </label>
+                    <input type="date" id="task-date" required>
+                    <div class="date-help-text">
+                      <small class="help-text">
+                        <i class="fas fa-lightbulb"></i>
+                        <span id="dateHelperText">Choose a date for your task</span>
+                      </small>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="task-time">
+                      Time
+                      <span class="field-help" title="What time do you want to start this task?">
+                        <i class="fas fa-question-circle"></i>
+                      </span>
+                    </label>
+                    <input type="time" id="task-time" required>
+                    <div class="time-help-text">
+                      <small class="help-text">
+                        <i class="fas fa-clock"></i>
+                        <span id="timeHelperText">Pick a good time to start</span>
+                      </small>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="task-duration">
+                      Duration (minutes)
+                      <span class="field-help" title="How long do you expect this task to take?">
+                        <i class="fas fa-question-circle"></i>
+                      </span>
+                    </label>
+                    <input type="number" id="task-duration" placeholder="60" min="1" max="480" required>
+                    <div class="duration-help-text">
+                      <small class="help-text">
+                        <i class="fas fa-hourglass-half"></i>
+                        <span>Common: 30min (quick), 60min (normal), 120min (deep work)</span>
+                      </small>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Quick Date/Time Presets -->
+                <div class="datetime-presets">
+                  <h4 class="presets-title">
+                    <i class="fas fa-magic"></i>
+                    Quick Options
+                  </h4>
+                  <div class="preset-buttons">
+                    <button type="button" class="preset-btn" data-preset="now">
+                      <i class="fas fa-play"></i>
+                      Right Now
+                    </button>
+                    <button type="button" class="preset-btn" data-preset="1hour">
+                      <i class="fas fa-clock"></i>
+                      In 1 Hour
+                    </button>
+                    <button type="button" class="preset-btn" data-preset="tomorrow-morning">
+                      <i class="fas fa-sun"></i>
+                      Tomorrow 9 AM
+                    </button>
+                    <button type="button" class="preset-btn" data-preset="next-week">
+                      <i class="fas fa-calendar-week"></i>
+                      Next Monday
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Advanced Options -->
+              <div class="form-section advanced-section">
+                <div class="section-header">
+                  <h3 class="section-title">Advanced Options</h3>
+                  <button type="button" class="advanced-toggle-button" id="advancedToggle">
+                    <i class="fas fa-chevron-down"></i>
+                    <span>Show Advanced</span>
+                  </button>
+                </div>
+                
+                <div class="advanced-options" id="advancedOptions">
+                  <div class="form-grid">
+                    <div class="form-group">
+                      <label for="task-milestone">
+                        Milestone
+                        <span class="field-help" title="Associate this task with a study milestone or goal">
+                          <i class="fas fa-question-circle"></i>
+                        </span>
+                      </label>
+                      <select id="task-milestone">
+                        <option value="">No Milestone</option>
+                        <option value="exam-prep">📚 Exam Preparation</option>
+                        <option value="assignment">📝 Assignment</option>
+                        <option value="project">🚀 Project</option>
+                        <option value="research">🔍 Research</option>
+                        <option value="review">📖 Review/Study</option>
+                        <option value="practice">💪 Practice</option>
+                        <option value="presentation">🎤 Presentation</option>
+                        <option value="reading">📄 Reading</option>
+                        <option value="lab-work">🧪 Lab Work</option>
+                        <option value="group-study">👥 Group Study</option>
+                        <option value="skill-building">🎯 Skill Building</option>
+                        <option value="other">✨ Other</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="task-location">Location</label>
+                      <input type="text" id="task-location" placeholder="Enter location">
+                    </div>
+                  </div>
+                  
+                  <div class="form-grid">
+                    <div class="form-group">
+                      <label for="task-effort">Effort Level</label>
+                      <select id="task-effort">
+                        <option value="1">😌 Very Easy</option>
+                        <option value="2" selected>🙂 Easy</option>
+                        <option value="3">😐 Moderate</option>
+                        <option value="4">😰 Hard</option>
+                        <option value="5">💀 Very Hard</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="task-color">Color</label>
+                      <input type="color" id="task-color" value="#4299e1">
+                    </div>
+                  </div>
+                  
+                  <div class="form-grid">
+                    <div class="form-group">
+                      <label for="task-deadline">Deadline</label>
+                      <input type="datetime-local" id="task-deadline">
+                    </div>
+                    <div class="form-group">
+                      <label for="task-custom-milestone">Custom Milestone</label>
+                      <input type="text" id="task-custom-milestone" placeholder="Enter custom milestone name">
+                    </div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="task-tags">Tags</label>
+                    <input type="text" id="task-tags" placeholder="Enter tags separated by commas">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="task-notes">Additional Notes</label>
+                    <textarea id="task-notes" placeholder="Any additional notes..."></textarea>
+                  </div>
+                  
+                  <!-- Repeat Options -->
+                  <div class="form-group">
+                    <label class="checkbox-label">
+                      <input type="checkbox" id="task-repeatable-days">
+                      <span class="checkmark"></span>
+                      Repeatable Task
+                    </label>
+                  </div>
+                  
+                  <div class="repeat-days" id="repeatDays">
+                    <label class="day-choice"><input type="checkbox" name="days" value="mon">Mon</label>
+                    <label class="day-choice"><input type="checkbox" name="days" value="tue">Tue</label>
+                    <label class="day-choice"><input type="checkbox" name="days" value="wed">Wed</label>
+                    <label class="day-choice"><input type="checkbox" name="days" value="thu">Thu</label>
+                    <label class="day-choice"><input type="checkbox" name="days" value="fri">Fri</label>
+                    <label class="day-choice"><input type="checkbox" name="days" value="sat">Sat</label>
+                    <label class="day-choice"><input type="checkbox" name="days" value="sun">Sun</label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Submit Button -->
+              <div class="form-actions">
+                <button type="submit" class="create-task-button">
+                  <i class="fas fa-plus"></i>
+                  Create Task
+                </button>
+                <button type="button" class="reset-form-button" id="resetForm">
+                  <i class="fas fa-undo"></i>
+                  Reset
+                </button>
+              </div>
+              
+              <!-- Keyboard shortcuts hint -->
+              <div class="keyboard-shortcuts-hint">
+                <small style="color: var(--ai-text-color); opacity: 0.7;">
+                  💡 Tips: Press <kbd>Ctrl+N</kbd> to focus on new task, <kbd>Enter</kbd> to move between fields
+                </small>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Task List Panel -->
+        <div class="tasks-list-panel">
+          <div class="panel-header">
+            <h2 class="panel-title">
+              <i class="fas fa-list"></i>
+              Your Tasks
+            </h2>
+            <div class="task-controls">
+              <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="pending">Pending</button>
+                <button class="filter-btn" data-filter="completed">Completed</button>
+                <button class="filter-btn" data-filter="today">Today</button>
+              </div>
+              <div class="sort-dropdown">
+                <select id="sortTasks">
+                  <option value="date">Sort by Date</option>
+                  <option value="priority">Sort by Priority</option>
+                  <option value="name">Sort by Name</option>
+                  <option value="duration">Sort by Duration</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          
+          <div class="tasks-list" id="tasksList">
+            <!-- Empty state -->
+            <div class="empty-state" id="emptyState">
+              <div class="empty-icon">
+                <i class="fas fa-tasks"></i>
+              </div>
+              <h3>No tasks yet!</h3>
+              <p>Create your first task to get started with better organization.</p>
+              <button class="create-first-task-btn" onclick="document.getElementById('task-name').focus()">
+                <i class="fas fa-plus"></i>
+                Create Your First Task
+              </button>
+            </div>
+            
+            <!-- Sample task for reference -->
+            <div class="task-item sample-task" style="display: none;">
+              <div class="task-checkbox-container">
+                <input type="checkbox" class="task-complete-checkbox">
+                <label><i class="fas fa-check"></i></label>
+              </div>
+              <div class="task-content">
+                <div class="task-header">
+                  <h3 class="task-name">Sample Task</h3>
+                  <div class="task-badges">
+                    <span class="priority-badge high">🔴 High</span>
+                    <span class="effort-badge">😐 Moderate</span>
+                  </div>
+                </div>
+                <p class="task-description">This is a sample task description</p>
+                <div class="task-meta">
+                  <div class="task-timing">
+                    <i class="fas fa-calendar"></i>
+                    <span class="task-date">Today, 2:00 PM</span>
+                    <i class="fas fa-clock"></i>
+                    <span class="task-duration">60 min</span>
+                  </div>
+                  <div class="task-actions">
+                    <button class="task-action-btn edit-task-button" title="Edit Task">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="task-action-btn delete-task-button" title="Delete Task">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+
+    <!-- Task Edit Modal -->
+    <div class="modal-overlay" id="editTaskModal">
+      <div class="modal-container">
+        <div class="modal-header">
+          <h2>Edit Task</h2>
+          <button class="modal-close-btn" id="closeEditModal">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-content">
+          <form id="edit-task-form">
+            <!-- Form fields will be populated by JavaScript -->
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notification Container -->
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <!-- Scripts -->
+    <script src="scripts/global-stats-manager.js"></script>
+    <script src="scripts/global-profile-manager.js"></script>
+    <script src="scripts/auto-hide-navigation.js"></script>
     <script src="scripts/tasks.js"></script>
     <script src="scripts/system.js"></script>
   </body>

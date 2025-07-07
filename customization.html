@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customization - Remi AI Assistant</title>
+    <meta name="description" content="Customize your Remi experience with themes, colors, and personal settings.">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/customization.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="sidebar-header sidebar-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <nav class="sidebar-icons">
+        <a href="index.html" class="sidebar-item">
+          <i class="fas fa-home"></i>
+          <span class="icon-description">Home</span>
+        </a>
+        <a href="chat.html" class="sidebar-item">
+          <i class="fas fa-message"></i>
+          <span class="icon-description">Chat</span>
+        </a>
+        <a href="tasks.html" class="sidebar-item">
+          <i class="fas fa-tasks"></i>
+          <span class="icon-description">Tasks</span>
+        </a>
+        <a href="schedule.html" class="sidebar-item">
+          <i class="fas fa-calendar-alt"></i>
+          <span class="icon-description">Schedule</span>
+        </a>
+        <a href="achievements.html" class="sidebar-item">
+          <i class="fas fa-trophy"></i>
+          <span class="icon-description">Achievements</span>
+        </a>
+        <a href="tracker.html" class="sidebar-item">
+          <i class="fas fa-chart-line"></i>
+          <span class="icon-description">Tracker</span>
+        </a>
+        <a href="customization.html" class="sidebar-item active">
+          <i class="fas fa-heart"></i>
+          <span class="icon-description">Customization</span>
+        </a>
+        <a href="shop.html" class="sidebar-item">
+          <i class="fas fa-store"></i>
+          <span class="icon-description">Shop</span>
+        </a>
+        <a href="settings.html" class="sidebar-item">
+          <i class="fas fa-cog"></i>
+          <span class="icon-description">Settings</span>
+        </a>
+      </nav>
+    </div>
+    
+    <!-- Topbar -->
+    <div class="topbar-menu">
+      <img src="pfp/Shinobu-Sticker.png" class="topbar-logo" alt="Shinobu">
+      <div class="topbar-title">
+        <img src="pfp/Remi-Logo-removebg-preview (1).png" class="main-logo" alt="Remi Logo">
+      </div>
+      <div class="topbar-actions">
+        <button class="toggle-dark-button" title="Toggle Dark Mode">
+          <i class="fas fa-moon toggle-icon"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="customization-container">
+        <!-- Header Section -->
+        <div class="customization-header">
+          <div class="header-content">
+            <i class="fas fa-palette header-icon"></i>
+            <h1>Customize Your Remi Experience</h1>
+            <p>Personalize your AI study companion to match your style and preferences</p>
+          </div>
+          <div class="preview-card">
+            <div class="preview-avatar">
+              <img src="pfp/Remi-pfp.png" alt="Remi" id="previewAvatar">
+              <div class="preview-status online"></div>
+            </div>
+            <div class="preview-info">
+              <h3 id="previewName">Remi</h3>
+              <p id="previewRelationship">Your AI Study Companion</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Customization Sections -->
+        <div class="customization-sections">
+          
+          <!-- Theme Customization -->
+          <div class="customization-section">
+            <div class="section-header">
+              <i class="fas fa-paint-brush"></i>
+              <h2>Theme & Appearance</h2>
+              <p>Choose your preferred visual style</p>
+            </div>
+            <div class="section-content">
+              <div class="theme-grid">
+                <div class="theme-option" data-theme="light">
+                  <div class="theme-preview light-theme">
+                    <div class="preview-topbar"></div>
+                    <div class="preview-sidebar"></div>
+                    <div class="preview-content"></div>
+                  </div>
+                  <h4>Light Theme</h4>
+                  <p>Clean and bright interface</p>
+                </div>
+                <div class="theme-option" data-theme="dark">
+                  <div class="theme-preview dark-theme">
+                    <div class="preview-topbar"></div>
+                    <div class="preview-sidebar"></div>
+                    <div class="preview-content"></div>
+                  </div>
+                  <h4>Dark Theme</h4>
+                  <p>Easy on the eyes</p>
+                </div>
+                <div class="theme-option" data-theme="auto">
+                  <div class="theme-preview auto-theme">
+                    <div class="preview-topbar"></div>
+                    <div class="preview-sidebar"></div>
+                    <div class="preview-content"></div>
+                  </div>
+                  <h4>Auto Theme</h4>
+                  <p>Follows system preference</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Color Customization -->
+          <div class="customization-section">
+            <div class="section-header">
+              <i class="fas fa-color-lens"></i>
+              <h2>Color Palette</h2>
+              <p>Customize your color scheme</p>
+            </div>
+            <div class="section-content">
+              <div class="color-groups">
+                <div class="color-group">
+                  <h3>Primary Colors</h3>
+                  <div class="color-controls">
+                    <div class="color-control">
+                      <label for="accentPrimary">Primary Accent</label>
+                      <input type="color" id="accentPrimary" value="#67C5FF">
+                      <span class="color-value">#67C5FF</span>
+                    </div>
+                    <div class="color-control">
+                      <label for="accentSecondary">Secondary Accent</label>
+                      <input type="color" id="accentSecondary" value="#AA79F9">
+                      <span class="color-value">#AA79F9</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="color-group">
+                  <h3>Interface Colors</h3>
+                  <div class="color-controls">
+                    <div class="color-control">
+                      <label for="backgroundColor">Background</label>
+                      <input type="color" id="backgroundColor" value="#EEF8FF">
+                      <span class="color-value">#EEF8FF</span>
+                    </div>
+                    <div class="color-control">
+                      <label for="textColor">Text Color</label>
+                      <input type="color" id="textColor" value="#125E8E">
+                      <span class="color-value">#125E8E</span>
+                    </div>
+                    <div class="color-control">
+                      <label for="sidebarBorderColor">Sidebar Border</label>
+                      <input type="color" id="sidebarBorderColor" value="#18BEFF">
+                      <span class="color-value">#18BEFF</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="color-group">
+                  <h3>Status Colors</h3>
+                  <div class="color-controls">
+                    <div class="color-control">
+                      <label for="successColor">Success</label>
+                      <input type="color" id="successColor" value="#10B981">
+                      <span class="color-value">#10B981</span>
+                    </div>
+                    <div class="color-control">
+                      <label for="warningColor">Warning</label>
+                      <input type="color" id="warningColor" value="#F59E0B">
+                      <span class="color-value">#F59E0B</span>
+                    </div>
+                    <div class="color-control">
+                      <label for="errorColor">Error</label>
+                      <input type="color" id="errorColor" value="#EF4444">
+                      <span class="color-value">#EF4444</span>
+                    </div>
+                  </div>
+                </div>
+              </div>              <div class="preset-colors">
+                <h3>Color Presets</h3>
+                <div class="preset-grid">
+                  <div class="preset-option" data-preset="default">
+                    <div class="preset-colors-preview">
+                      <span style="background: #67C5FF;"></span>
+                      <span style="background: #AA79F9;"></span>
+                      <span style="background: #EEF8FF;"></span>
+                    </div>
+                    <p>Ocean Breeze</p>
+                  </div>
+                  <div class="preset-option" data-preset="sunset">
+                    <div class="preset-colors-preview">
+                      <span style="background: #FF6B6B;"></span>
+                      <span style="background: #4ECDC4;"></span>
+                      <span style="background: #FFF5E1;"></span>
+                    </div>
+                    <p>Sunset Glow</p>
+                  </div>
+                  <div class="preset-option" data-preset="forest">
+                    <div class="preset-colors-preview">
+                      <span style="background: #52C41A;"></span>
+                      <span style="background: #1890FF;"></span>
+                      <span style="background: #F6FFED;"></span>
+                    </div>
+                    <p>Forest Fresh</p>
+                  </div>
+                  <div class="preset-option" data-preset="lavender">
+                    <div class="preset-colors-preview">
+                      <span style="background: #B37FEB;"></span>
+                      <span style="background: #50C9C3;"></span>
+                      <span style="background: #FAF7FF;"></span>
+                    </div>
+                    <p>Lavender Dream</p>
+                  </div>
+                  <div class="preset-option" data-preset="ocean">
+                    <div class="preset-colors-preview">
+                      <span style="background: #0EA5E9;"></span>
+                      <span style="background: #06B6D4;"></span>
+                      <span style="background: #F0F9FF;"></span>
+                    </div>
+                    <p>Deep Ocean</p>
+                  </div>
+                  <div class="preset-option" data-preset="rose">
+                    <div class="preset-colors-preview">
+                      <span style="background: #F43F5E;"></span>
+                      <span style="background: #EC4899;"></span>
+                      <span style="background: #FFF1F2;"></span>
+                    </div>
+                    <p>Rose Garden</p>
+                  </div>
+                  <div class="preset-option" data-preset="mint">
+                    <div class="preset-colors-preview">
+                      <span style="background: #10B981;"></span>
+                      <span style="background: #059669;"></span>
+                      <span style="background: #ECFDF5;"></span>
+                    </div>
+                    <p>Fresh Mint</p>
+                  </div>
+                  <div class="preset-option" data-preset="cosmic">
+                    <div class="preset-colors-preview">
+                      <span style="background: #8B5CF6;"></span>
+                      <span style="background: #A855F7;"></span>
+                      <span style="background: #FAF5FF;"></span>
+                    </div>
+                    <p>Cosmic Purple</p>
+                  </div>
+                  <div class="preset-option" data-preset="amber">
+                    <div class="preset-colors-preview">
+                      <span style="background: #F59E0B;"></span>
+                      <span style="background: #D97706;"></span>
+                      <span style="background: #FFFBEB;"></span>
+                    </div>
+                    <p>Golden Amber</p>
+                  </div>
+                  <div class="preset-option" data-preset="coral">
+                    <div class="preset-colors-preview">
+                      <span style="background: #FF7849;"></span>
+                      <span style="background: #FF6B9D;"></span>
+                      <span style="background: #FFF8F5;"></span>
+                    </div>
+                    <p>Coral Reef</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Background Customization -->
+          <div class="customization-section">
+            <div class="section-header">
+              <i class="fas fa-image"></i>
+              <h2>Background & Wallpaper</h2>
+              <p>Set custom backgrounds for different pages</p>
+            </div>
+            <div class="section-content">
+              <div class="background-options">
+                <div class="background-group">
+                  <h3>Chat Background</h3>
+                  <div class="background-controls">
+                    <div class="current-background" id="chatBackground">
+                      <img src="" alt="Current background" style="display: none;">
+                      <div class="no-background">
+                        <i class="fas fa-image"></i>
+                        <p>No background set</p>
+                      </div>
+                    </div>
+                    <div class="background-buttons">
+                      <button class="btn-secondary" onclick="selectBackground('chat')">
+                        <i class="fas fa-upload"></i> Upload Image
+                      </button>
+                      <button class="btn-outline" onclick="removeBackground('chat')">
+                        <i class="fas fa-trash"></i> Remove
+                      </button>
+                    </div>
+                    <input type="file" id="chatBackgroundInput" accept="image/*" style="display: none;">
+                  </div>
+                </div>
+
+                <div class="background-group">
+                  <h3>Main Background</h3>
+                  <div class="background-controls">
+                    <div class="current-background" id="mainBackground">
+                      <img src="" alt="Current background" style="display: none;">
+                      <div class="no-background">
+                        <i class="fas fa-image"></i>
+                        <p>No background set</p>
+                      </div>
+                    </div>
+                    <div class="background-buttons">
+                      <button class="btn-secondary" onclick="selectBackground('main')">
+                        <i class="fas fa-upload"></i> Upload Image
+                      </button>
+                      <button class="btn-outline" onclick="removeBackground('main')">
+                        <i class="fas fa-trash"></i> Remove
+                      </button>
+                    </div>
+                    <input type="file" id="mainBackgroundInput" accept="image/*" style="display: none;">
+                  </div>
+                </div>
+              </div>
+
+              <div class="background-presets">
+                <h3>Background Presets</h3>
+                <div class="preset-backgrounds">
+                  <div class="bg-preset" data-bg="gradient1">
+                    <div class="bg-preview gradient-bg-1"></div>
+                    <p>Soft Gradient</p>
+                  </div>
+                  <div class="bg-preset" data-bg="gradient2">
+                    <div class="bg-preview gradient-bg-2"></div>
+                    <p>Ocean Wave</p>
+                  </div>
+                  <div class="bg-preset" data-bg="pattern1">
+                    <div class="bg-preview pattern-bg-1"></div>
+                    <p>Subtle Pattern</p>
+                  </div>
+                  <div class="bg-preset" data-bg="none">
+                    <div class="bg-preview solid-bg"></div>
+                    <p>Solid Color</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Remi Personality -->
+          <div class="customization-section">
+            <div class="section-header">
+              <i class="fas fa-robot"></i>
+              <h2>Remi's Personality</h2>
+              <p>Customize how Remi interacts with you</p>
+            </div>
+            <div class="section-content">
+              <div class="personality-options">
+                <div class="personality-group">
+                  <h3>Communication Style</h3>
+                  <div class="radio-group">
+                    <label class="radio-option">
+                      <input type="radio" name="communicationStyle" value="friendly" checked>
+                      <span class="radio-custom"></span>
+                      <div class="radio-content">
+                        <h4>Friendly & Encouraging</h4>
+                        <p>Warm, supportive, and motivational</p>
+                      </div>
+                    </label>
+                    <label class="radio-option">
+                      <input type="radio" name="communicationStyle" value="professional">
+                      <span class="radio-custom"></span>
+                      <div class="radio-content">
+                        <h4>Professional & Direct</h4>
+                        <p>Focused, efficient, and to-the-point</p>
+                      </div>
+                    </label>
+                    <label class="radio-option">
+                      <input type="radio" name="communicationStyle" value="casual">
+                      <span class="radio-custom"></span>
+                      <div class="radio-content">
+                        <h4>Casual & Relaxed</h4>
+                        <p>Laid-back, informal, and easy-going</p>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="personality-group">
+                  <h3>Relationship Level</h3>
+                  <div class="relationship-slider">
+                    <input type="range" id="relationshipLevel" min="0" max="100" value="65" class="slider">
+                    <div class="slider-labels">
+                      <span>Acquaintance</span>
+                      <span>Friend</span>
+                      <span>Best Friend</span>
+                    </div>
+                    <div class="relationship-preview">
+                      <div class="relationship-meter">
+                        <div class="meter-fill" style="width: 65%"></div>
+                      </div>
+                      <span class="relationship-text">Friend (65%)</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="personality-group">
+                  <h3>Remi's Name</h3>
+                  <div class="name-input">
+                    <input type="text" id="remiName" value="Remi" placeholder="Enter custom name">
+                    <button class="btn-outline" onclick="resetName()">Reset</button>
+                  </div>
+                </div>
+
+                <div class="personality-group">
+                  <h3>Avatar</h3>
+                  <div class="avatar-selection">
+                    <div class="current-avatar">
+                      <img src="pfp/Remi-pfp.png" alt="Current avatar" id="currentAvatar">
+                      <button class="edit-avatar-btn" onclick="selectAvatar()">
+                        <i class="fas fa-camera"></i>
+                      </button>
+                    </div>
+                    <input type="file" id="avatarInput" accept="image/*" style="display: none;">
+                    <div class="avatar-presets">
+                      <div class="avatar-preset" data-avatar="pfp/Remi-pfp.png">
+                        <img src="pfp/Remi-pfp.png" alt="Default Remi">
+                      </div>
+                      <div class="avatar-preset" data-avatar="pfp/Shinobu-Sticker.png">
+                        <img src="pfp/Shinobu-Sticker.png" alt="Shinobu">
+                      </div>
+                      <!-- Add more preset avatars here -->
+                    </div>
+                    <div class="avatar-help">
+                      <button class="btn-outline small" onclick="showAvatarGuide()" title="Download setup instructions">
+                        <i class="fas fa-download"></i> Setup Guide
+                      </button>
+                      <p class="help-text">
+                        <i class="fas fa-info-circle"></i>
+                        Custom avatars are saved as file paths. For persistence across sessions, follow the setup guide.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interface Preferences -->
+          <div class="customization-section">
+            <div class="section-header">
+              <i class="fas fa-cogs"></i>
+              <h2>Interface Preferences</h2>
+              <p>Adjust interface behavior and features</p>
+            </div>
+            <div class="section-content">
+              <div class="preferences-grid">
+                <div class="preference-item">
+                  <div class="preference-info">
+                    <h4>Auto-expand Sidebar</h4>
+                    <p>Automatically expand sidebar on hover</p>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="autoExpandSidebar">
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+
+                <div class="preference-item">
+                  <div class="preference-info">
+                    <h4>Typing Indicators</h4>
+                    <p>Show when Remi is typing</p>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="typingIndicators" checked>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+
+                <div class="preference-item">
+                  <div class="preference-info">
+                    <h4>Smooth Animations</h4>
+                    <p>Enable smooth transitions and animations</p>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="smoothAnimations" checked>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+
+                <div class="preference-item">
+                  <div class="preference-info">
+                    <h4>Sound Effects</h4>
+                    <p>Enable notification and interaction sounds</p>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="soundEffects">
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+
+                <div class="preference-item">
+                  <div class="preference-info">
+                    <h4>Compact Mode</h4>
+                    <p>Use more compact interface elements</p>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="compactMode">
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+
+                <div class="preference-item">
+                  <div class="preference-info">
+                    <h4>Auto-save Preferences</h4>
+                    <p>Automatically save customization changes</p>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="autoSave" checked>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="customization-actions">
+            <button class="btn-primary" onclick="saveCustomization()">
+              <i class="fas fa-save"></i>
+              Save Changes
+            </button>
+            <button class="btn-outline" onclick="resetToDefaults()">
+              <i class="fas fa-undo"></i>
+              Reset to Defaults
+            </button>
+            <button class="btn-secondary" onclick="exportSettings()">
+              <i class="fas fa-download"></i>
+              Export Settings
+            </button>
+            <button class="btn-outline" onclick="importSettings()">
+              <i class="fas fa-upload"></i>
+              Import Settings
+            </button>
+            <input type="file" id="importInput" accept=".json" style="display: none;">
+          </div>
+        </div>
+      </div>
+    </div>    <script src="scripts/global-profile-manager.js"></script>
+    <script src="scripts/customization-loader.js"></script>
+    <script src="scripts/auto-hide-navigation.js"></script>
+    <script src="scripts/customization.js"></script>
+    <script src="scripts/system.js"></script>
+  </body>
+</html>

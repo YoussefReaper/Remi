@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
             sidebar.style.width = '250px';
         } else {
             mainContent.style.marginLeft = '60px';
-            sidebar.style.width = '60px';
+            sidebar.style.width = '70px';
         }
     });
 });
